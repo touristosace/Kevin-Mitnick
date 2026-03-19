@@ -4,43 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark Web Hack | Command Center</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    
     <style>
-        body { 
-            background-color: #020202; 
-            color: #ffffff; 
-            font-family: 'Cairo', sans-serif; 
-            margin: 0;
-            overflow-x: hidden;
-        }
+        body { background-color: #020202; color: #ffffff; font-family: 'Cairo', sans-serif; margin: 0; overflow-x: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
-        
-        /* تأثير الشبكة الخلفية */
-        .bg-grid {
-            background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), 
-                              linear-gradient(to bottom, #0f172a 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        /* تأثير التوهج للعنوان الرئيسي */
-        .text-glow {
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
-        }
-
-        /* إخفاء الأقسام افتراضياً */
+        .bg-grid { background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px); background-size: 40px 40px; }
         .page-section { display: none; }
         .page-active { display: block; animation: fadeIn 0.5s ease-in-out; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .nav-link { cursor: pointer; transition: all 0.3s; }
-        .nav-link:hover { color: #3b82f6; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-link { cursor: pointer; transition: all 0.3s; padding: 5px 10px; }
         .nav-active { color: #3b82f6; border-bottom: 2px solid #3b82f6; }
     </style>
 </head>
@@ -48,9 +21,7 @@
 
     <nav class="bg-black/90 border-b border-blue-900/40 p-4 sticky top-0 z-50 backdrop-blur-md">
         <div class="container mx-auto flex justify-between items-center">
-            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">
-                DARK WEB <span class="text-white">HACK</span>
-            </div>
+            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">DARK WEB <span class="text-white">HACK</span></div>
             <ul class="flex space-x-reverse space-x-6 text-sm font-bold uppercase">
                 <li><a onclick="showPage('home')" id="link-home" class="nav-link nav-active">الرئيسية</a></li>
                 <li><a onclick="showPage('about')" id="link-about" class="nav-link">من نحن</a></li>
@@ -61,117 +32,60 @@
     </nav>
 
     <main class="container mx-auto pt-10 pb-20 px-6">
-
         <div id="page-home" class="page-section page-active text-center py-20">
-            <div class="inline-block px-4 py-1 border border-blue-500/30 text-blue-400 text-xs font-cyber mb-6 animate-pulse">
-                ENCRYPTED_CONNECTION_ESTABLISHED
-            </div>
-            <h1 class="text-6xl md:text-9xl font-black mb-6 font-cyber italic text-glow uppercase tracking-tighter">
-                DARK WEB <span class="text-blue-500">HACK</span>
-            </h1>
-            <p class="text-gray-400 text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">
-                بوابة العمليات المتقدمة للتحكم والسيطرة الرقمية. النظام جاهز لاستقبال الأوامر.
-            </p>
+            <h1 class="text-6xl md:text-9xl font-black mb-6 font-cyber italic text-blue-500 uppercase tracking-tighter">DARK WEB <span class="text-white">HACK</span></h1>
+            <p class="text-gray-400 text-xl md:text-2xl font-bold max-w-2xl mx-auto">بوابة العمليات المتقدمة للتحكم والسيطرة الرقمية.</p>
             <div class="mt-12 flex justify-center gap-6">
-                <button onclick="showPage('work')" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 font-black text-lg transition-all shadow-lg shadow-blue-900/20">
-                    استعراض العمليات
-                </button>
-                <button class="border border-white/20 hover:bg-white/5 text-white px-10 py-4 font-black text-lg transition-all">
-                    تسجيل الدخول
-                </button>
+                <button onclick="showPage('work')" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 font-black text-lg transition-all">استعراض العمليات</button>
             </div>
         </div>
 
         <div id="page-about" class="page-section py-10">
             <div class="max-w-4xl mx-auto bg-zinc-950 border border-blue-900/30 p-10 shadow-2xl">
                 <h2 class="text-3xl font-black mb-8 text-white font-cyber border-r-4 border-blue-600 pr-4 italic">ABOUT_US</h2>
-                <p class="text-2xl leading-relaxed text-gray-300 font-bold mb-6">
-                    نظام متقدم لإدارة العمليات السيبرانية. واجهة تفاعلية مصممة لتحليل الثغرات، تتبع الأهداف، وإدارة الاختراقات الأمنية في بيئة مشفرة تماماً.
-                </p>
-                <p class="text-lg text-gray-400 leading-loose">
-                    تم بناء النظام لضمان الاستجابة السريعة في العمليات الحرجة. نحن البوابة الرسمية لمنظومة <span class="text-blue-500 font-cyber">Nexus Cybersecurity</span>، نقدم حلولاً برمجية متطورة لاختبار الاختراق وحماية قواعد البيانات الحساسة من بروتوكولات الهجوم المتقدمة (APTs). رؤيتنا هي تأمين الفضاء الرقمي من خلال أدوات تحليلية عالية الدقة.
-                </p>
+                <p class="text-2xl leading-relaxed text-gray-300 font-bold mb-6">نظام متقدم لإدارة العمليات السيبرانية. واجهة تفاعلية مصممة لتحليل الثغرات، تتبع الأهداف، وإدارة الاختراقات الأمنية في بيئة مشفرة تماماً.</p>
+                <p class="text-lg text-gray-400 leading-loose">تم بناء النظام باستخدام Tailwind CSS. نحن البوابة الرسمية لمنظومة Nexus Cybersecurity، نقدم حلولاً برمجية متطورة لاختبار الاختراق وحماية قواعد البيانات.</p>
             </div>
         </div>
 
         <div id="page-work" class="page-section py-10">
-            <h2 class="text-4xl font-black mb-12 text-center font-cyber tracking-widest text-white uppercase">Operational_Logs</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all group">
-                    <div class="text-red-500 text-xs font-cyber mb-2">● STATUS: DEPLOYED</div>
-                    <h3 class="text-xl font-black mb-4 text-white group-hover:text-blue-400">عملية Stuxnet</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">المساهمة في تنفيذ التدمير الرقمي الموجه للبنى التحتية الحساسة عالية الأمان.</p>
+            <h2 class="text-4xl font-black mb-12 text-center font-cyber text-white">OPERATIONAL_LOGS</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-right">
+                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all">
+                    <h3 class="text-xl font-black mb-4 text-white">1. عملية Stuxnet</h3>
+                    <p class="text-gray-400 text-sm">المساهمة في تنفيذ التدمير الرقمي الموجه للبنى التحتية الحساسة.</p>
                 </div>
-                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all group">
-                    <div class="text-yellow-500 text-xs font-cyber mb-2">● STATUS: EXECUTED</div>
-                    <h3 class="text-xl font-black mb-4 text-white group-hover:text-blue-400">هجوم SolarWinds</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">اختراق سلاسل التوريد العالمية والوصول إلى أعمق نقاط الشبكات السيادية.</p>
+                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all">
+                    <h3 class="text-xl font-black mb-4 text-white">2. هجوم SolarWinds</h3>
+                    <p class="text-gray-400 text-sm">اختراق سلاسل التوريد العالمية والوصول إلى أعمق نقاط الشبكات السيادية.</p>
                 </div>
-                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all group">
-                    <div class="text-purple-500 text-xs font-cyber mb-2">● STATUS: COMPLETED</div>
-                    <h3 class="text-xl font-black mb-4 text-white group-hover:text-blue-400">هجوم WannaCry</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">إطلاق برمجيات الفدية العالمية لتقييم مدى مرونة الأنظمة المالية والمصرفية.</p>
+                <div class="bg-zinc-950 p-8 border border-blue-900/20 hover:border-blue-500 transition-all">
+                    <h3 class="text-xl font-black mb-4 text-white">3. هجوم WannaCry</h3>
+                    <p class="text-gray-400 text-sm">إطلاق برمجيات الفدية العالمية لتقييم مدى مرونة الأنظمة المالية.</p>
                 </div>
             </div>
         </div>
 
         <div id="page-contact" class="page-section py-10">
             <div class="max-w-3xl mx-auto bg-zinc-950 border border-blue-900/50 p-10 shadow-2xl">
-                <h2 class="text-3xl font-black mb-8 text-white font-cyber tracking-widest border-b border-blue-600 pb-4 italic uppercase">Send_Signal</h2>
-                <form class="grid md:grid-cols-2 gap-6" onsubmit="event.preventDefault(); alert('تم تشفير الرسالة وإرسالها!');">
-                    <div class="flex flex-col">
-                        <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">User_ID</label>
-                        <input type="text" required placeholder="اسم المستخدم" class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none">
-                    </div>
-                    <div class="flex flex-col">
-                        <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">Secure_Email</label>
-                        <input type="email" required placeholder="example@dark.web" class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none font-cyber">
-                    </div>
-                    <div class="md:col-span-2 flex flex-col">
-                        <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">Encrypted_Message</label>
-                        <textarea rows="4" required placeholder="اكتب تفاصيل العملية هنا..." class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none"></textarea>
-                    </div>
-                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-4 transition-all uppercase tracking-widest">
-                        Execute_Send
-                    </button>
+                <h2 class="text-3xl font-black mb-8 text-white font-cyber border-b border-blue-600 pb-4 italic">CONTACT_US</h2>
+                <form class="grid md:grid-cols-1 gap-6" onsubmit="event.preventDefault(); alert('تم تشفير الرسالة وإرسالها!');">
+                    <input type="text" placeholder="User_ID" class="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-blue-500 outline-none">
+                    <textarea rows="4" placeholder="Encrypted_Message" class="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-blue-500 outline-none"></textarea>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 transition-all">EXECUTE_SEND</button>
                 </form>
             </div>
-            
-            <div class="mt-20 text-center">
-                <h3 class="text-xl font-bold mb-6 text-zinc-500 font-cyber">SYSTEM_RATING_PROTOCOL</h3>
-                <div class="flex justify-center gap-4 text-4xl text-zinc-800">
-                    <span class="cursor-pointer hover:text-blue-400 transition">★</span>
-                    <span class="cursor-pointer hover:text-blue-400 transition">★</span>
-                    <span class="cursor-pointer hover:text-blue-400 transition">★</span>
-                    <span class="cursor-pointer hover:text-blue-400 transition">★</span>
-                    <span class="cursor-pointer hover:text-blue-400 transition">★</span>
-                </div>
-            </div>
         </div>
-
     </main>
 
     <script>
         function showPage(pageId) {
-            // إخفاء جميع الأقسام
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => section.classList.remove('page-active'));
-
-            // إظهار القسم المطلوب
-            const activeSection = document.getElementById('page-' + pageId);
-            if (activeSection) {
-                activeSection.classList.add('page-active');
-            }
-
-            // تحديث شكل الروابط في القائمة
-            const links = document.querySelectorAll('.nav-link');
-            links.forEach(link => link.classList.remove('nav-active'));
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
+            document.getElementById('page-' + pageId).classList.add('page-active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-active'));
             document.getElementById('link-' + pageId).classList.add('nav-active');
-
-            // العودة لأعلى الصفحة تلقائياً
             window.scrollTo(0, 0);
         }
     </script>
-
 </body>
 </html>
