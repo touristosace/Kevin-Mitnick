@@ -3,51 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Web Hack | الاختراق المظلم</title>
+    <title>Dark Web Hack | Central Command</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        :root {
-            --neon-blue: #00f2fe;
-            --dark-bg: #020202;
+        :root { --neon-blue: #00f2fe; --deep-red: #ff003c; }
+        body { background-color: #020202; color: #e2e8f0; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+        
+        /* خلفية شبكية برمجية */
+        .bg-grid {
+            background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05) 0%, transparent 70%);
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
         }
         
-        body { 
-            background-color: var(--dark-bg); 
-            color: #ffffff; 
-            /* استخدام خط Cairo للعربي و Orbitron للإنجليزي */
-            font-family: 'Cairo', 'Orbitron', sans-serif; 
+        .mission-status {
+            animation: blink 1.5s infinite;
         }
-
-        .font-cyber { font-family: 'Orbitron', sans-serif; }
-
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070');
-            background-size: cover; 
-            background-position: center;
-        }
-
-        /* تأثير التوهج للنصوص (Neon Glow) */
-        .text-glow {
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.5);
-        }
-
-        .border-glow {
-            border: 1px solid var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
     </style>
 </head>
-<body>
+<body class="bg-grid">
 
-    <nav class="fixed w-full z-50 bg-black/90 border-b border-blue-900/50 p-4 backdrop-blur-sm">
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-xl border-b border-blue-900/40 p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black text-blue-500 font-cyber tracking-tighter">DARK WEB <span class="text-white">HACK</span></div>
+            <a href="#home" class="text-2xl font-black text-blue-500 font-cyber tracking-widest hover:text-white transition">DARK WEB <span class="text-white">HACK</span></a>
             
-            <ul class="hidden md:flex space-x-reverse space-x-8 text-sm font-bold uppercase">
+            <ul class="hidden md:flex space-x-reverse space-x-8 text-sm font-bold uppercase tracking-widest">
                 <li><a href="#home" class="hover:text-blue-400 transition">الرئيسية</a></li>
                 <li><a href="#about" class="hover:text-blue-400 transition">من نحن</a></li>
                 <li><a href="#work" class="hover:text-blue-400 transition">أعمالنا</a></li>
@@ -55,38 +49,93 @@
             </ul>
             
             <div class="flex gap-4">
-                <button class="text-xs font-bold border border-blue-500 px-5 py-2 rounded hover:bg-blue-500 transition">تسجيل الدخول</button>
+                <button class="text-xs font-bold border border-blue-500/50 px-5 py-2 rounded-sm hover:bg-blue-500 transition">LOGIN_SYSTEM</button>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center">
+    <section id="home" class="h-screen flex items-center justify-center text-center hero-gradient pt-20">
         <div class="px-4">
-            <h1 class="text-6xl md:text-9xl font-black mb-6 tracking-tighter text-glow font-cyber italic">
+            <div class="inline-block px-3 py-1 border border-blue-500/30 text-blue-400 text-xs font-cyber mb-6 animate-pulse">SYSTEM_STATUS: ACTIVE</div>
+            <h1 class="text-6xl md:text-9xl font-black mb-6 tracking-tighter font-cyber italic text-white">
                 DARK WEB <span class="text-blue-500">HACK</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto font-bold mb-8">
-                الدخول إلى أعماق الشبكة. حيث القوة، السيطرة، والخصوصية المطلقة.
+            <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto font-bold mb-10 leading-relaxed">
+                بوابة العمليات المتقدمة للتحكم والسيطرة الرقمية.
             </p>
-            <div class="flex justify-center gap-4">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-black text-lg transition-all transform hover:scale-105 border-glow">
-                    ابدأ الاختراق الآن
-                </button>
+            <div class="flex justify-center gap-6">
+                <a href="#work" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-sm font-black text-lg transition-all border-b-4 border-blue-900">استعراض العمليات</a>
+                <a href="#about" class="border border-white/20 hover:bg-white/10 text-white px-10 py-4 rounded-sm font-black text-lg transition-all">البروتوكول الأمني</a>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-black border-t border-blue-900/30">
-        <div class="container mx-auto text-center">
-            <h3 class="text-2xl font-black mb-6 text-blue-400">تقييم النظام</h3>
-            <div class="flex justify-center gap-3 text-4xl text-gray-700">
-                <span class="cursor-pointer hover:text-blue-400 transition duration-300">★</span>
-                <span class="cursor-pointer hover:text-blue-400 transition duration-300">★</span>
-                <span class="cursor-pointer hover:text-blue-400 transition duration-300">★</span>
-                <span class="cursor-pointer hover:text-blue-400 transition duration-300">★</span>
-                <span class="cursor-pointer hover:text-blue-400 transition duration-300">★</span>
+    <section id="about" class="py-32 bg-black/50 border-y border-blue-900/20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8 text-white border-r-4 border-blue-600 pr-4">من نحن_</h2>
+                    <p class="text-xl leading-relaxed text-gray-300 font-bold mb-6">
+                        نظام متقدم لإدارة العمليات السيبرانية. واجهة تفاعلية مصممة لتحليل الثغرات، تتبع الأهداف، وإدارة الاختراقات الأمنية في بيئة مشفرة تماماً.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-400">
+                        تم بناء النظام باستخدام <span class="text-blue-400">Tailwind CSS</span> لضمان الاستجابة السريعة في العمليات الحرجة. نحن البوابة الرسمية لمنظومة <span class="text-white font-cyber">Nexus Cybersecurity</span>، نقدم حلولاً برمجية متطورة لاختبار الاختراق وحماية قواعد البيانات الحساسة من بروتوكولات الهجوم المتقدمة (APTs). رؤيتنا هي تأمين الفضاء الرقمي من خلال أدوات تحليلية عالية الدقة.
+                    </p>
+                </div>
+                <div class="bg-blue-900/10 p-8 border border-blue-500/20 rounded-lg relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
+                    <code class="text-blue-400 text-sm font-cyber">
+                        > INITIALIZING_NEXUS_CORE...<br>
+                        > LOADING_ENCRYPTION_LAYERS... [OK]<br>
+                        > SCANNING_VULNERABILITIES... [FOUND: 0]<br>
+                        > STATUS: SECURE_ENVIRONMENT
+                    </code>
+                    <div class="mt-8 text-6xl opacity-10 font-black font-cyber text-blue-500">NEXUS</div>
+                </div>
             </div>
-            <p class="mt-4 text-gray-500 text-sm">ساعدنا في تحسين بروتوكولاتنا</p>
+        </div>
+    </section>
+
+    <section id="work" class="py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-16 font-cyber uppercase tracking-widest text-white">MISSION_LOGS (أعمالنا)</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-right" dir="rtl">
+                
+                <div class="bg-zinc-900/50 p-8 border border-zinc-800 rounded-sm card-glow transition-all">
+                    <div class="text-red-500 font-cyber mb-4 text-xs mission-status">● DEPLOYED</div>
+                    <h3 class="text-2xl font-black mb-4 text-white">عملية Stuxnet</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">المساهمة في تنفيذ التدمير الرقمي الموجه للبنى التحتية الحساسة.</p>
+                    <div class="mt-6 pt-4 border-t border-zinc-800 text-blue-400 text-xs font-cyber">TYPE: DIGITAL_DESTRUCTION</div>
+                </div>
+
+                <div class="bg-zinc-900/50 p-8 border border-zinc-800 rounded-sm card-glow transition-all">
+                    <div class="text-yellow-500 font-cyber mb-4 text-xs mission-status">● EXECUTED</div>
+                    <h3 class="text-2xl font-black mb-4 text-white">هجوم SolarWinds</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">اختراق سلاسل التوريد العالمية والوصول إلى أعمق نقاط الشبكات المؤسسية.</p>
+                    <div class="mt-6 pt-4 border-t border-zinc-800 text-blue-400 text-xs font-cyber">TYPE: SUPPLY_CHAIN_BREACH</div>
+                </div>
+
+                <div class="bg-zinc-900/50 p-8 border border-zinc-800 rounded-sm card-glow transition-all">
+                    <div class="text-purple-500 font-cyber mb-4 text-xs mission-status">● COMPLETED</div>
+                    <h3 class="text-2xl font-black mb-4 text-white">هجوم WannaCry</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">إطلاق برمجيات الفدية العالمية لتقييم مدى مرونة الأنظمة المالية الدولية.</p>
+                    <div class="mt-6 pt-4 border-t border-zinc-800 text-blue-400 text-xs font-cyber">TYPE: GLOBAL_RANSOMWARE</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 border-t border-blue-900/30 bg-black">
+        <div class="container mx-auto text-center">
+            <h3 class="text-xl font-bold mb-6 text-gray-500 uppercase tracking-widest">تحليل رضا المستخدم</h3>
+            <div class="flex justify-center gap-4 text-4xl">
+                <button class="hover:text-blue-500 transition">★</button>
+                <button class="hover:text-blue-500 transition">★</button>
+                <button class="hover:text-blue-500 transition">★</button>
+                <button class="hover:text-blue-500 transition">★</button>
+                <button class="text-zinc-800 hover:text-blue-500 transition">★</button>
+            </div>
         </div>
     </section>
 
