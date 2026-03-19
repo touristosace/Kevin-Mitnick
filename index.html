@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark Web Hack | Command Center</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     
@@ -12,9 +13,9 @@
         .font-cyber { font-family: 'Orbitron', sans-serif; }
         .bg-grid { background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px); background-size: 40px 40px; }
         
-        /* أهم جزء: إخفاء الأقسام */
-        .page-section { display: none; min-height: 85vh; }
-        .page-active { display: flex; animation: fadeIn 0.4s ease-in-out; flex-direction: column; justify-content: center; }
+        /* نظام إظهار وإخفاء الصفحات */
+        .page-section { display: none; min-height: 85vh; width: 100%; }
+        .page-active { display: flex; flex-direction: column; justify-content: center; align-items: center; animation: fadeIn 0.5s ease-in-out; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
@@ -24,7 +25,7 @@
 </head>
 <body class="bg-grid min-h-screen">
 
-    <nav class="bg-black/95 border-b border-blue-900/40 p-4 sticky top-0 z-50">
+    <nav class="bg-black/95 border-b border-blue-900/40 p-4 sticky top-0 z-50 shadow-2xl">
         <div class="container mx-auto flex justify-between items-center">
             <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">DARK WEB <span class="text-white">HACK</span></div>
             <ul class="flex space-x-reverse space-x-6 text-sm font-bold uppercase">
@@ -39,37 +40,46 @@
     <main class="container mx-auto px-6">
 
         <div id="page-home" class="page-section page-active text-center">
-            <h1 class="text-6xl md:text-9xl font-black mb-6 font-cyber italic text-blue-500 uppercase tracking-tighter">DARK WEB <span class="text-white">HACK</span></h1>
-            <p class="text-gray-400 text-xl md:text-2xl font-bold max-w-2xl mx-auto">بوابة العمليات المتقدمة للتحكم والسيطرة الرقمية.</p>
+            <h1 class="text-6xl md:text-9xl font-black mb-6 font-cyber italic text-blue-500 uppercase tracking-tighter shadow-blue-500/50">DARK WEB <span class="text-white">HACK</span></h1>
+            <p class="text-gray-400 text-xl md:text-2xl font-bold max-w-2xl mx-auto leading-relaxed">نظام متطور للتحكم والسيطرة الرقمية. تم تفعيل البروتوكولات الأمنية.</p>
         </div>
 
         <div id="page-about" class="page-section">
             <div class="max-w-4xl mx-auto bg-[#050505] border border-blue-900/30 p-10 shadow-2xl">
                 <h2 class="text-3xl font-black mb-8 text-white font-cyber border-r-4 border-blue-600 pr-4 italic">ABOUT_US</h2>
-                <p class="text-2xl leading-relaxed text-gray-300 font-bold mb-6 text-right">نظام متقدم لإدارة العمليات السيبرانية. واجهة تفاعلية مصممة لتحليل الثغرات وإدارة الاختراقات الأمنية.</p>
+                <p class="text-2xl leading-relaxed text-gray-300 font-bold mb-6">نحن منظمة تقنية متخصصة في تطوير أدوات اختبار الاختراق وحماية البنى التحتية الحساسة من الهجمات السيبرانية المتقدمة.</p>
             </div>
         </div>
 
         <div id="page-work" class="page-section">
-            <h2 class="text-4xl font-black mb-12 text-center font-cyber text-white">OPERATIONAL_LOGS</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-right">
+            <h2 class="text-4xl font-black mb-12 text-center font-cyber text-white uppercase">Operational_Logs</h2>
+            <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-[#050505] p-8 border border-blue-900/20 hover:border-blue-500 transition-all">
-                    <h3 class="text-xl font-black mb-4 text-white">عملية Stuxnet</h3>
-                    <p class="text-gray-400 text-sm">تنفيذ التدمير الرقمي الموجه للبنى التحتية.</p>
+                    <h3 class="text-xl font-black mb-4 text-blue-500 font-cyber uppercase text-right">Stuxnet</h3>
+                    <p class="text-gray-400 text-sm text-right">تنفيذ التدمير الرقمي الموجه للبنى التحتية عالية الأمان.</p>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div id="page-contact" class="page-section">
             <div class="w-full max-w-4xl mx-auto bg-[#050505] border border-blue-900/30 p-10 shadow-2xl relative">
-                <div class="absolute top-0 left-0 w-full h-[2px] bg-blue-600"></div>
-                <h2 class="text-3xl font-black mb-10 text-white font-cyber text-center italic uppercase">إرسال إشارة مشفرة (Contact Us)</h2>
-                <form class="space-y-6" onsubmit="event.preventDefault(); alert('SYSTEM: Message Sent.');">
+                <div class="absolute top-0 left-0 w-full h-[2px] bg-blue-600 shadow-[0_0_15px_#2563eb]"></div>
+                <h2 class="text-3xl font-black mb-10 text-white font-cyber text-center italic uppercase tracking-tighter">إرسال إشارة مشفرة <span class="text-blue-500">(Contact Us)</span></h2>
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('تم تشفير الرسالة وإرسالها!');">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="User_ID" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-500 transition-all">
-                        <input type="email" placeholder="Secure_Email" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-500 transition-all">
+                        <div class="flex flex-col">
+                            <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">User_ID</label>
+                            <input type="text" placeholder="اسمك الكريم" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600 transition-all">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">Secure_Email</label>
+                            <input type="email" placeholder="بريدك الإلكتروني" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600 transition-all">
+                        </div>
                     </div>
-                    <textarea rows="5" placeholder="اكتب رسالتك هنا..." class="w-full bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-500 transition-all resize-none"></textarea>
+                    <div class="flex flex-col">
+                        <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">Encrypted_Message</label>
+                        <textarea rows="5" placeholder="اكتب رسالتك هنا..." class="w-full bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600 transition-all resize-none"></textarea>
+                    </div>
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 text-xl transition-all shadow-lg uppercase tracking-widest">إرسال البيانات عبر النفق الآمن</button>
                 </form>
             </div>
@@ -79,20 +89,27 @@
 
     <script>
         function showPage(pageId) {
-            // 1. إخفاء كل الأقسام
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => section.classList.remove('page-active'));
+            // إخفاء كل الأقسام
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('page-active');
+            });
 
-            // 2. إظهار القسم الذي ضغطنا عليه
-            const activeSection = document.getElementById('page-' + pageId);
-            activeSection.classList.add('page-active');
+            // إظهار القسم المطلوب
+            const targetSection = document.getElementById('page-' + pageId);
+            if (targetSection) {
+                targetSection.classList.add('page-active');
+            }
 
-            // 3. تحديث ألوان المنيو
-            const links = document.querySelectorAll('.nav-link');
-            links.forEach(link => link.classList.remove('nav-active'));
-            document.getElementById('link-' + pageId).classList.add('nav-active');
+            // تحديث روابط المنيو
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('nav-active');
+            });
+            const activeLink = document.getElementById('link-' + pageId);
+            if (activeLink) {
+                activeLink.classList.add('nav-active');
+            }
 
-            // 4. العودة للأعلى
+            // العودة للأعلى
             window.scrollTo(0, 0);
         }
     </script>
