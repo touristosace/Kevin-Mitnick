@@ -147,7 +147,29 @@
     </div>
 </div>
     </main>
+// --- محرك التحقق من الهوية الجديد ---
+document.querySelector('#page-login form').onsubmit = function(event) {
+    event.preventDefault(); // منع الصفحة من التحديث
+    
+    // الحصول على القيم التي أدخلها المستخدم
+    const userInput = this.querySelector('input[type="text"]').value;
+    const passInput = this.querySelector('input[type="password"]').value;
 
+    // البيانات الخاصة التي حددتها أنت
+    const correctUser = "207-74-9724";
+    const correctPass = "S01H7ERI19NN70";
+
+    if (userInput === correctUser && passInput === correctPass) {
+        alert('ACCESS GRANTED: Welcome Agent 207-74');
+        showPage('profile'); // سينقلك لصفحة البروفايل (تأكد من إضافة قسم البروفايل)
+        
+        // تغيير شكل القائمة العلوية لإظهار أنك داخل النظام
+        document.getElementById('link-login').innerText = "ملفي الشخصي";
+        document.getElementById('link-login').onclick = () => showPage('profile');
+    } else {
+        alert('ACCESS DENIED: Invalid Credentials.');
+    }
+};
     <script>
         // --- مصفوفة الماتريكس ---
         const canvas = document.getElementById('matrix-canvas');
