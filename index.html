@@ -87,5 +87,33 @@
             window.scrollTo(0, 0);
         }
     </script>
+    <script>
+    // وظيفة التنقل بين الصفحات التي تعمل الآن
+    function showPage(pageId) {
+        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
+        document.getElementById('page-' + pageId).classList.add('page-active');
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-active'));
+        const activeLink = document.getElementById('link-' + pageId);
+        if(activeLink) activeLink.classList.add('nav-active');
+        window.scrollTo(0, 0);
+    }
+
+    // تأثير الكتابة الآلية للعنوان
+    const titleText = "DARK WEB HACK";
+    const titleElement = document.querySelector('h1');
+    let i = 0;
+
+    function typeWriter() {
+        if (i < titleText.length) {
+            if (i === 0) titleElement.innerHTML = ''; // مسح المحتوى في البداية
+            titleElement.innerHTML += titleText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 150); // سرعة الكتابة
+        }
+    }
+
+    // ابدأ التأثير عند تحميل الصفحة
+    window.onload = typeWriter;
+</script>
 </body>
 </html>
