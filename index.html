@@ -66,16 +66,37 @@
             </div>
         </div>
 
-        <div id="page-contact" class="page-section py-10">
-            <div class="max-w-3xl mx-auto bg-zinc-950 border border-blue-900/50 p-10 shadow-2xl">
-                <h2 class="text-3xl font-black mb-8 text-white font-cyber border-b border-blue-600 pb-4 italic">CONTACT_US</h2>
-                <form class="grid md:grid-cols-1 gap-6" onsubmit="event.preventDefault(); alert('تم تشفير الرسالة وإرسالها!');">
-                    <input type="text" placeholder="User_ID" class="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-blue-500 outline-none">
-                    <textarea rows="4" placeholder="Encrypted_Message" class="bg-zinc-900 border border-zinc-800 p-3 text-white focus:border-blue-500 outline-none"></textarea>
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-black py-4 transition-all">EXECUTE_SEND</button>
-                </form>
+<div id="page-contact" class="page-section py-10 min-h-[80vh] flex items-center justify-center">
+    <div class="w-full max-w-4xl bg-[#050505] border border-blue-900/30 p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,1)] relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-50"></div>
+        
+        <h2 class="text-3xl md:text-4xl font-black mb-12 text-white font-cyber text-center tracking-tighter">
+            إرسال إشارة مشفرة <span class="text-blue-500">(Contact Us)</span>
+        </h2>
+
+        <form class="space-y-8" onsubmit="event.preventDefault(); alert('SYSTEM: Message Encrypted and Sent via Secure Tunnel.');">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex flex-col">
+                    <label class="text-blue-500 text-[10px] font-cyber mb-2 tracking-[3px] uppercase self-end">USER_ID</label>
+                    <input type="text" placeholder="اسمك الكريم" dir="rtl" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white focus:border-blue-600 outline-none transition-all text-right placeholder:text-zinc-700">
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-blue-500 text-[10px] font-cyber mb-2 tracking-[3px] uppercase self-end">SECURE_EMAIL</label>
+                    <input type="email" placeholder="بريدك الإلكتروني" dir="rtl" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white focus:border-blue-600 outline-none transition-all text-right placeholder:text-zinc-700">
+                </div>
             </div>
-        </div>
+
+            <div class="flex flex-col">
+                <label class="text-blue-500 text-[10px] font-cyber mb-2 tracking-[3px] uppercase self-end">ENCRYPTED_MESSAGE</label>
+                <textarea rows="5" placeholder="اكتب رسالتك هنا..." dir="rtl" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white focus:border-blue-600 outline-none transition-all text-right placeholder:text-zinc-700 resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 text-xl transition-all shadow-[0_5px_20px_rgba(37,99,235,0.2)] uppercase tracking-widest">
+                إرسال البيانات عبر النفق الآمن
+            </button>
+        </form>
+    </div>
+</div>
     </main>
 
     <script>
