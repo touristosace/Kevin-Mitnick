@@ -1,69 +1,77 @@
-<section id="contact" class="py-32 bg-zinc-950">
-    <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto bg-black border border-blue-900/50 p-10 rounded-lg shadow-2xl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Web Hack | اتصل بنا</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #020202; 
+            color: #ffffff; 
+            font-family: 'Cairo', sans-serif; 
+            margin: 0;
+        }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+        .bg-grid {
+            background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), 
+                              linear-gradient(to bottom, #0f172a 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-grid min-h-screen">
+
+    <nav class="bg-black/90 border-b border-blue-900/40 p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-black text-blue-500 font-cyber">DARK WEB <span class="text-white">HACK</span></div>
+            <ul class="flex space-x-reverse space-x-6 text-sm font-bold uppercase">
+                <li><a href="index.html" class="hover:text-blue-400 transition">الرئيسية</a></li>
+                <li><a href="about.html" class="hover:text-blue-400 transition">من نحن</a></li>
+                <li><a href="work.html" class="hover:text-blue-400 transition">أعمالنا</a></li>
+                <li><a href="contact.html" class="text-blue-400">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="py-20 container mx-auto px-6">
+        <div class="max-w-3xl mx-auto bg-zinc-950 border border-blue-900/50 p-10 shadow-2xl shadow-blue-900/10">
             <h2 class="text-3xl font-black mb-8 text-white font-cyber tracking-widest border-b border-blue-600 pb-4">
                 إرسال إشارة مشفرة (Contact Us)
             </h2>
             <form class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <label class="block text-blue-400 text-xs font-cyber mb-2">USER_ID</label>
-                    <input type="text" placeholder="اسمك الكريم" class="w-full bg-zinc-900 border border-zinc-800 p-3 rounded-sm focus:border-blue-500 outline-none transition">
+                <div class="flex flex-col">
+                    <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">USER_ID</label>
+                    <input type="text" placeholder="اسمك الكريم" class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none">
                 </div>
-                <div>
-                    <label class="block text-blue-400 text-xs font-cyber mb-2">SECURE_EMAIL</label>
-                    <input type="email" placeholder="بريدك الإلكتروني" class="w-full bg-zinc-900 border border-zinc-800 p-3 rounded-sm focus:border-blue-500 outline-none transition">
+                <div class="flex flex-col">
+                    <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">SECURE_EMAIL</label>
+                    <input type="email" placeholder="بريدك الإلكتروني" class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none font-cyber">
                 </div>
-                <div class="md:col-span-2">
-                    <label class="block text-blue-400 text-xs font-cyber mb-2">ENCRYPTED_MESSAGE</label>
-                    <textarea rows="4" placeholder="اكتب رسالتك هنا..." class="w-full bg-zinc-900 border border-zinc-800 p-3 rounded-sm focus:border-blue-500 outline-none transition"></textarea>
+                <div class="md:col-span-2 flex flex-col">
+                    <label class="text-blue-400 text-xs font-cyber mb-2 uppercase">ENCRYPTED_MESSAGE</label>
+                    <textarea rows="4" placeholder="اكتب رسالتك هنا..." class="bg-zinc-900 border border-zinc-800 p-3 rounded-sm text-white focus:border-blue-500 outline-none"></textarea>
                 </div>
-                <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-sm transition-all shadow-lg shadow-blue-900/20">
+                <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-4 transition-all">
                     إرسال البيانات عبر النفق الآمن
                 </button>
             </form>
         </div>
-    </div>
-</section>
 
-<div id="authModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md">
-    <div class="bg-zinc-900 border-2 border-blue-600 p-8 w-full max-w-md relative">
-        <button onclick="toggleAuth()" class="absolute top-4 left-4 text-gray-500 hover:text-white font-cyber">CLOSE [X]</button>
-        
-        <div id="loginForm">
-            <h2 class="text-2xl font-black mb-6 text-white font-cyber">ACCESS_REQUIRED</h2>
-            <input type="text" placeholder="اسم المستخدم" class="w-full bg-black border border-zinc-700 p-3 mb-4 rounded-sm text-blue-400 font-cyber">
-            <input type="password" placeholder="كلمة المرور" class="w-full bg-black border border-zinc-700 p-3 mb-6 rounded-sm text-blue-400 font-cyber">
-            <button class="w-full bg-blue-600 py-3 font-black hover:bg-blue-500 transition mb-4">LOG_IN</button>
-            <p class="text-xs text-center text-gray-500">ليس لديك تصريح؟ <span onclick="switchForm()" class="text-blue-400 cursor-pointer">أنشئ حساباً جديداً</span></p>
+        <div class="mt-20 text-center">
+            <h3 class="text-xl font-bold mb-6 text-zinc-500 font-cyber">SYSTEM_RATING_PROTOCOL</h3>
+            <div class="flex justify-center gap-4 text-4xl text-zinc-800">
+                <span class="cursor-pointer hover:text-blue-400 transition">★</span>
+                <span class="cursor-pointer hover:text-blue-400 transition">★</span>
+                <span class="cursor-pointer hover:text-blue-400 transition">★</span>
+                <span class="cursor-pointer hover:text-blue-400 transition">★</span>
+                <span class="cursor-pointer hover:text-blue-400 transition">★</span>
+            </div>
         </div>
+    </section>
 
-        <div id="signupForm" class="hidden">
-            <h2 class="text-2xl font-black mb-6 text-white font-cyber">CREATE_IDENTITY</h2>
-            <input type="text" placeholder="الاسم الكامل" class="w-full bg-black border border-zinc-700 p-3 mb-4 rounded-sm text-blue-400">
-            <input type="email" placeholder="البريد الإلكتروني" class="w-full bg-black border border-zinc-700 p-3 mb-4 rounded-sm text-blue-400 font-cyber">
-            <input type="password" placeholder="كلمة مرور قوية" class="w-full bg-black border border-zinc-700 p-3 mb-6 rounded-sm text-blue-400 font-cyber">
-            <button class="w-full bg-green-600 py-3 font-black hover:bg-green-500 transition mb-4">REGISTER_NEW_NODE</button>
-            <p class="text-xs text-center text-gray-500">لديك حساب بالفعل؟ <span onclick="switchForm()" class="text-blue-400 cursor-pointer">تسجيل الدخول</span></p>
-        </div>
-    </div>
-</div>
-
-<script>
-    // وظائف بسيطة للتحكم بالنافذة المنبثقة
-    function toggleAuth() {
-        const modal = document.getElementById('authModal');
-        modal.classList.toggle('hidden');
-    }
-
-    function switchForm() {
-        document.getElementById('loginForm').classList.toggle('hidden');
-        document.getElementById('signupForm').classList.toggle('hidden');
-    }
-
-    // ربط أزرار الـ Navbar بالدالة
-    document.querySelectorAll('button').forEach(btn => {
-        if(btn.innerText.includes('LOGIN') || btn.innerText.includes('دخول') || btn.innerText.includes('تسجيل')) {
-            btn.onclick = toggleAuth;
-        }
-    });
-</script>
+</body>
+</html>
