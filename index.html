@@ -48,6 +48,8 @@
                 <li><a href="javascript:void(0)" onclick="showPage('work')" id="link-work" class="nav-link">أعمالنا</a></li>
                 <li><a href="javascript:void(0)" onclick="showPage('contact')" id="link-contact" class="nav-link">اتصل بنا</a></li>
             </ul>
+            <li><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 px-4 py-1 rounded hover:bg-blue-600 transition">دخول</a></li>
+<li><a onclick="showPage('signup')" id="link-signup" class="nav-link bg-blue-600 px-4 py-1 rounded hover:bg-blue-700 transition">إنشاء حساب</a></li>
         </div>
     </nav>
 
@@ -109,7 +111,41 @@
                 </form>
             </div>
         </div>
+<div id="page-login" class="page-section pt-10">
+    <div class="max-w-md mx-auto glass-panel p-8 shadow-2xl relative">
+        <div class="absolute top-0 left-0 w-full h-[2px] bg-blue-500"></div>
+        <h2 class="text-2xl font-black mb-8 text-center font-cyber text-white">RESTRICTED_ACCESS</h2>
+        <form class="space-y-6" onsubmit="event.preventDefault(); alert('ACCESS DENIED: Brute force protection active.');">
+            <div class="flex flex-col">
+                <label class="text-blue-500 text-[10px] font-cyber mb-1 self-end">AGENT_ID</label>
+                <input type="text" placeholder="اسم المستخدم" class="bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            </div>
+            <div class="flex flex-col">
+                <label class="text-blue-500 text-[10px] font-cyber mb-1 self-end">ENCRYPTED_PASS</label>
+                <input type="password" placeholder="كلمة المرور" class="bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 py-3 font-black uppercase hover:bg-blue-700 transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">تحقق من الهوية</button>
+            <p class="text-center text-xs text-zinc-500">نسيت مفتاح الدخول؟ <span class="text-blue-400 cursor-pointer">استعادة النفاذ</span></p>
+        </form>
+    </div>
+</div>
 
+<div id="page-signup" class="page-section pt-10">
+    <div class="max-w-md mx-auto glass-panel p-8 shadow-2xl relative border-l-4 border-l-blue-600">
+        <h2 class="text-2xl font-black mb-8 text-center font-cyber text-white">RECRUIT_NEW_AGENT</h2>
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('REGISTRATION_LOCKED: System at capacity.');">
+            <input type="text" placeholder="الاسم الحركي (Username)" class="w-full bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            <input type="email" placeholder="البريد المشفر (Email)" class="w-full bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            <input type="password" placeholder="كلمة المرور" class="w-full bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            <input type="password" placeholder="تأكيد كلمة المرور" class="w-full bg-black/50 border border-zinc-800 p-3 text-white text-right outline-none focus:border-blue-600">
+            <div class="flex items-center justify-end gap-2 text-xs text-zinc-400">
+                <label>أوافق على بروتوكولات السرية</label>
+                <input type="checkbox" class="accent-blue-600">
+            </div>
+            <button type="submit" class="w-full bg-zinc-800 py-3 font-black uppercase hover:bg-blue-600 transition">إنشاء سجل العميل</button>
+        </form>
+    </div>
+</div>
     </main>
 
     <script>
