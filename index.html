@@ -3,30 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Web Hack | Command Center</title>
+    <title>Dark Web Hack | Matrix Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #020202; color: #ffffff; font-family: 'Cairo', sans-serif; margin: 0; overflow-x: hidden; }
+        body { background-color: #020202; color: #ffffff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
-        .bg-grid { background-image: linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px); background-size: 40px 40px; }
         
-        /* إخفاء الأقسام افتراضياً */
-        .page-section { display: none; width: 100%; min-height: 80vh; }
-        /* إظهار القسم النشط فقط */
-        .page-active { display: block !important; animation: fadeIn 0.5s ease-in-out; }
+        /* طبقة الشبكة الزرقاء فوق المطر */
+        .bg-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.5) 1px, transparent 1px), 
+                              linear-gradient(to bottom, rgba(15, 23, 42, 0.5) 1px, transparent 1px);
+            background-size: 40px 40px; z-index: 1; pointer-events: none;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-link { cursor: pointer; transition: 0.3s; padding: 8px 15px; display: inline-block; }
+        /* قماش المطر (Canvas) */
+        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: 0; }
+
+        .page-section { display: none; width: 100%; min-height: 80vh; position: relative; z-index: 10; }
+        .page-active { display: block !important; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .nav-link { cursor: pointer; transition: 0.3s; padding: 8px 15px; }
         .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
+        main { position: relative; z-index: 10; overflow-y: auto; height: calc(100vh - 70px); }
     </style>
 </head>
-<body class="bg-grid min-h-screen">
+<body class="min-h-screen">
 
-    <nav class="bg-black/95 border-b border-blue-900/40 p-4 sticky top-0 z-[100] shadow-2xl">
+    <canvas id="matrix-canvas"></canvas>
+    <div class="bg-grid"></div>
+
+    <nav class="bg-black/80 border-b border-blue-900/40 p-4 sticky top-0 z-[100] backdrop-blur-sm">
         <div class="container mx-auto flex justify-between items-center">
-            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer uppercase">DARK WEB <span class="text-white">HACK</span></div>
-            <ul class="flex space-x-reverse space-x-2 md:space-x-6 text-sm font-bold">
+            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">DARK WEB HACK</div>
+            <ul class="flex space-x-reverse space-x-4 md:space-x-6 text-sm font-bold">
                 <li><a href="javascript:void(0)" onclick="showPage('home')" id="link-home" class="nav-link nav-active">الرئيسية</a></li>
                 <li><a href="javascript:void(0)" onclick="showPage('about')" id="link-about" class="nav-link">من نحن</a></li>
                 <li><a href="javascript:void(0)" onclick="showPage('work')" id="link-work" class="nav-link">أعمالنا</a></li>
@@ -35,104 +47,95 @@
         </div>
     </nav>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="px-6">
+        <div id="page-home" class="page-section page-active text-center pt-32">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber italic text-blue-500 uppercase tracking-tighter">DARK WEB <span class="text-white">HACK</span></h1>
+            <p class="text-gray-300 text-xl font-bold max-w-2xl mx-auto bg-black/40 p-4 rounded">نظام اختراق متقدم - تم تفعيل بروتوكول الماتريكس.</p>
+        </div>
 
-        <div id="page-home" class="page-section page-active text-center">
-            <div class="py-20">
-                <h1 class="text-5xl md:text-8xl font-black mb-6 font-cyber italic text-blue-500 uppercase tracking-tighter">DARK WEB <span class="text-white">HACK</span></h1>
-                <p class="text-gray-400 text-xl md:text-2xl font-bold max-w-2xl mx-auto">بوابة العمليات المتقدمة للتحكم والسيطرة الرقمية. النظام جاهز لاستقبال الأوامر.</p>
+        <div id="page-about" class="page-section pt-20">
+            <div class="max-w-4xl mx-auto bg-black/80 border border-blue-900/30 p-10 shadow-2xl backdrop-blur-md">
+                <h2 class="text-3xl font-black mb-8 text-white font-cyber border-r-4 border-blue-600 pr-4 italic">ABOUT_US</h2>
+                <p class="text-xl leading-relaxed text-gray-300 font-bold">نحن منظمة تقنية تعمل في الخفاء لتأمين البيانات واختبار ثغرات الأنظمة العالمية.</p>
             </div>
         </div>
 
-        <div id="page-about" class="page-section">
-            <div class="max-w-4xl mx-auto bg-[#050505] border border-blue-900/30 p-10 shadow-2xl mt-10">
-                <h2 class="text-3xl font-black mb-8 text-white font-cyber border-r-4 border-blue-600 pr-4 italic uppercase">ABOUT_US</h2>
-                <p class="text-2xl leading-relaxed text-gray-300 font-bold mb-6 text-right">نظام متقدم لإدارة العمليات السيبرانية. واجهة تفاعلية مصممة لتحليل الثغرات وإدارة الاختراقات الأمنية في بيئة مشفرة تماماً.</p>
-            </div>
+        <div id="page-work" class="page-section pt-20">
+            <h2 class="text-4xl font-black mb-12 text-center font-cyber text-white uppercase">Operational_Logs</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-black/80 p-8 border border-blue-900/20 hover:border-blue-500 transition-all text-right">
+                    <h3 class="text-xl font-black mb-4 text-blue-400 font-cyber">STUXNET</h3>
+                    <p class="text-gray-400 text-sm">عملية ناجحة لتدمير أجهزة الطرد المركزي.</p>
+                </div>
+                </div>
         </div>
 
-        <div id="page-work" class="page-section">
-            <h2 class="text-4xl font-black mb-12 text-center font-cyber text-white uppercase tracking-widest mt-10">Operational_Logs</h2>
-            <div class="grid md:grid-cols-3 gap-8 w-full max-w-6xl mx-auto">
-                <div class="bg-[#050505] p-8 border border-blue-900/20 hover:border-blue-500 transition-all group text-right">
-                    <div class="text-blue-500 text-[10px] font-cyber mb-2">STATUS: COMPLETED</div>
-                    <h3 class="text-xl font-black mb-4 text-white uppercase font-cyber">Stuxnet</h3>
-                    <p class="text-gray-400 text-sm">تنفيذ التدمير الرقمي الموجه للبنى التحتية الحساسة عالية الأمان.</p>
-                </div>
-                <div class="bg-[#050505] p-8 border border-blue-900/20 hover:border-blue-500 transition-all group text-right">
-                    <div class="text-blue-500 text-[10px] font-cyber mb-2">STATUS: EXECUTED</div>
-                    <h3 class="text-xl font-black mb-4 text-white uppercase font-cyber">SolarWinds</h3>
-                    <p class="text-gray-400 text-sm">اختراق سلاسل التوريد العالمية والوصول إلى أعمق نقاط الشبكات السيادية.</p>
-                </div>
-                <div class="bg-[#050505] p-8 border border-blue-900/20 hover:border-blue-500 transition-all group text-right">
-                    <div class="text-blue-500 text-[10px] font-cyber mb-2">STATUS: SUCCESS</div>
-                    <h3 class="text-xl font-black mb-4 text-white uppercase font-cyber">WannaCry</h3>
-                    <p class="text-gray-400 text-sm">إطلاق برمجيات الفدية لتقييم مرونة الأنظمة المالية والمصرفية.</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="page-contact" class="page-section">
-            <div class="w-full max-w-4xl mx-auto bg-[#050505] border border-blue-900/30 p-10 shadow-2xl relative mt-10">
+        <div id="page-contact" class="page-section pt-10 pb-20">
+            <div class="w-full max-w-4xl mx-auto bg-black/90 border border-blue-900/30 p-10 shadow-2xl relative">
                 <div class="absolute top-0 left-0 w-full h-[2px] bg-blue-600 shadow-[0_0_15px_#2563eb]"></div>
-                <h2 class="text-3xl font-black mb-10 text-white font-cyber text-center italic uppercase">إرسال إشارة مشفرة <span class="text-blue-500">(Contact Us)</span></h2>
-                <form class="space-y-6" onsubmit="event.preventDefault(); alert('SYSTEM: Signal Sent.');">
+                <h2 class="text-3xl font-black mb-10 text-white font-cyber text-center italic uppercase">إرسال إشارة مشفرة (Contact Us)</h2>
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('تم الإرسال!');">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div class="flex flex-col">
-                            <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">User_ID</label>
-                            <input type="text" placeholder="اسمك الكريم" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600">
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">Secure_Email</label>
-                            <input type="email" placeholder="بريدك الإلكتروني" class="bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600">
-                        </div>
+                        <input type="text" placeholder="User_ID" class="bg-zinc-900/50 border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600">
+                        <input type="email" placeholder="Secure_Email" class="bg-zinc-900/50 border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600">
                     </div>
-                    <div class="flex flex-col">
-                        <label class="text-blue-500 text-[10px] font-cyber mb-2 self-end uppercase">Encrypted_Message</label>
-                        <textarea rows="4" placeholder="اكتب رسالتك هنا..." class="w-full bg-[#0a0a0a] border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600 resize-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 text-xl transition-all shadow-lg uppercase">إرسال البيانات عبر النفق الآمن</button>
+                    <textarea rows="4" placeholder="اكتب رسالتك..." class="w-full bg-zinc-900/50 border border-zinc-800 p-4 text-white text-right outline-none focus:border-blue-600"></textarea>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 text-xl transition-all shadow-lg">إرسال عبر النفق الآمن</button>
                 </form>
             </div>
         </div>
-
     </main>
 
     <script>
-        // دالة التنقل الرئيسية
-        function showPage(pageId) {
-            console.log("Switching to: " + pageId); // للتأكد في وحدة التحكم
-            
-            // 1. إخفاء جميع الأقسام باستخدام remove class
-            const allSections = document.querySelectorAll('.page-section');
-            allSections.forEach(section => {
-                section.classList.remove('page-active');
-            });
+        // --- كود مطر الماتريكس ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
 
-            // 2. إظهار القسم المطلوب
-            const targetSection = document.getElementById('page-' + pageId);
-            if (targetSection) {
-                targetSection.classList.add('page-active');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = Array.from({ length: columns }).fill(canvas.height);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0'; // لون المطر (أخضر هكرز)
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
             }
-
-            // 3. تحديث روابط التنقل
-            const allLinks = document.querySelectorAll('.nav-link');
-            allLinks.forEach(link => {
-                link.classList.remove('nav-active');
-            });
-            const activeLink = document.getElementById('link-' + pageId);
-            if (activeLink) {
-                activeLink.classList.add('nav-active');
-            }
-
-            // 4. العودة لأعلى الصفحة
-            window.scrollTo(0, 0);
         }
 
-        // التأكد من تحميل الصفحة الرئيسية عند البداية
-        window.onload = function() {
-            showPage('home');
-        };
+        setInterval(draw, 30);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // --- كود التنقل ---
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
+            document.getElementById('page-' + pageId).classList.add('page-active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-active'));
+            document.getElementById('link-' + pageId).classList.add('nav-active');
+            document.querySelector('main').scrollTo(0, 0);
+        }
     </script>
 </body>
 </html>
