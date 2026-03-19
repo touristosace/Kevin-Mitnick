@@ -3,129 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DARK WEB | AGENT TERMINAL</title>
+    <title>TERMINAL_SYSTEM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
-        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.8; }
-        .page-section { display: none; padding: 20px; position: relative; z-index: 10; }
-        .page-active { display: block !important; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-link { cursor: pointer; transition: 0.3s; }
+        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.6; }
+        .page-section { display: none; padding: 40px 20px; min-height: 80vh; }
+        .page-active { display: block !important; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        .nav-link { cursor: pointer; padding: 5px 15px; transition: 0.3s; }
         .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
-        .glass-card { background: rgba(5, 5, 5, 0.9); border: 1px solid #1e3a8a; backdrop-filter: blur(10px); }
+        .glass-box { background: rgba(10, 10, 10, 0.95); border: 1px solid #1e3a8a; backdrop-filter: blur(15px); }
         main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }
-        input { background: rgba(20, 20, 20, 0.8) !important; border: 1px solid #333 !important; }
-        input:focus { border-color: #2563eb !important; }
     </style>
 </head>
 <body>
 
     <canvas id="matrix-canvas"></canvas>
 
-    <nav class="bg-black/90 border-b border-blue-900/50 p-4 sticky top-0 z-50 backdrop-blur-md">
+    <nav class="bg-black/90 border-b border-blue-900/40 p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer uppercase tracking-tighter">DARK_WEB_OS</div>
-            <ul class="flex space-x-reverse space-x-4 md:space-x-6 text-xs md:text-sm font-bold items-center">
+            <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">AGENT_OS</div>
+            <ul class="flex space-x-reverse space-x-4 text-xs md:text-sm font-bold items-center">
                 <li><a onclick="showPage('home')" id="link-home" class="nav-link nav-active">الرئيسية</a></li>
-                <li><a onclick="showPage('data')" id="link-data" class="nav-link">قاعدة البيانات</a></li>
-                <li><a onclick="showPage('work')" id="link-work" class="nav-link">أعمالنا</a></li>
-                <li id="nav-login"><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 px-3 py-1 rounded">دخول الوكيل</a></li>
-                <li id="nav-profile" class="hidden"><a onclick="showPage('profile')" id="link-profile" class="nav-link text-green-500 font-cyber">MY_FILE</a></li>
+                <li id="nav-login"><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 rounded">دخول</a></li>
+                <li id="nav-profile" class="hidden"><a onclick="showPage('profile')" id="link-profile" class="nav-link text-green-500 font-cyber">PROFILE</a></li>
                 <li id="nav-logout" class="hidden"><a onclick="logout()" class="nav-link text-red-500">خروج</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="container mx-auto max-w-6xl py-10">
+    <main class="container mx-auto max-w-5xl">
         
-        <div id="page-home" class="page-section page-active text-center pt-20">
-            <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 italic uppercase">SYSTEM_READY</h1>
-            <p class="text-gray-300 text-xl font-bold max-w-2xl mx-auto glass-card p-4 rounded shadow-2xl">بوابة العمليات الرقمية المشفرة - أدخل بيانات الاعتماد للوصول للملفات.</p>
+        <div id="page-home" class="page-section page-active text-center pt-24">
+            <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
+            <p class="text-gray-400 text-lg font-bold">بوابة النفاذ الآمن - النظام في وضع الاستعداد.</p>
         </div>
 
-        <div id="page-data" class="page-section">
-            <h2 class="text-3xl font-black mb-8 text-center font-cyber text-red-500 uppercase tracking-widest">RECOVERED_ENTITY_DATA</h2>
-            <div class="overflow-x-auto glass-card rounded-lg p-4">
-                <table class="w-full text-right border-collapse">
-                    <thead>
-                        <tr class="border-b border-blue-900 text-blue-500 font-cyber text-xs uppercase">
-                            <th class="p-3">ID_AGENT</th>
-                            <th class="p-3">الاسم الرمزي</th>
-                            <th class="p-3">الرتبة</th>
-                            <th class="p-3">الحالة</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm text-gray-300">
-                        <tr class="border-b border-zinc-900 hover:bg-blue-900/20">
-                            <td class="p-3 font-cyber">#00124</td>
-                            <td class="p-3 font-bold">Shadow Walker</td>
-                            <td class="p-3 italic">كبير مهندسي التشفير</td>
-                            <td class="p-3 text-green-500 animate-pulse">متصل</td>
-                        </tr>
-                        <tr class="border-b border-zinc-900 hover:bg-blue-900/20">
-                            <td class="p-3 font-cyber">#00189</td>
-                            <td class="p-3 font-bold">سارة كمال</td>
-                            <td class="p-3 italic">محللة ثغرات</td>
-                            <td class="p-3 text-red-500">مجهول</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="page-work" class="page-section">
-            <h2 class="text-3xl font-black mb-10 text-center font-cyber uppercase">Operational_Logs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="glass-card p-6 border-r-4 border-blue-600">
-                    <h3 class="text-blue-500 font-bold font-cyber">STUXNET_REVIVAL</h3>
-                    <p class="text-gray-400 text-sm mt-2">عملية ناجحة لاختراق الأنظمة الصناعية وتعديل بروتوكولات التحكم.</p>
-                </div>
-                <div class="glass-card p-6 border-r-4 border-red-600">
-                    <h3 class="text-red-500 font-bold font-cyber">DATA_BREACH_01</h3>
-                    <p class="text-gray-400 text-sm mt-2">سحب بيانات 50 ألف حساب من خادم البنك المركزي.</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="page-login" class="page-section">
-            <div class="max-w-md mx-auto glass-card p-10 relative shadow-2xl border-t-2 border-blue-600">
-                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-white uppercase italic">IDENTITY_CHECK</h2>
+        <div id="page-login" class="page-section pt-10">
+            <div class="max-w-md mx-auto glass-box p-10 shadow-2xl rounded">
+                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">ACCESS_REQUIRED</h2>
                 <form id="loginForm" class="space-y-6">
-                    <div>
-                        <label class="text-blue-500 text-[10px] font-cyber block mb-1">AGENT_SERIAL_ID</label>
-                        <input type="text" id="userInput" placeholder="207-74-9724" class="w-full p-4 text-white text-center outline-none font-cyber rounded">
-                    </div>
-                    <div>
-                        <label class="text-blue-500 text-[10px] font-cyber block mb-1">ACCESS_KEY</label>
-                        <input type="password" id="passInput" placeholder="••••••••••••" class="w-full p-4 text-white text-center outline-none rounded">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase shadow-lg hover:bg-blue-700 transition tracking-widest">فتح النظام</button>
-                    <p id="loginError" class="text-red-500 text-xs text-center hidden font-bold">SYSTEM ERROR: INVALID CREDENTIALS</p>
+                    <input type="text" id="userInput" placeholder="USER_ID (207...)" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
+                    <input type="password" id="passInput" placeholder="PASSWORD" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
+                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase hover:bg-blue-700 transition">تحليل الدخول</button>
+                    <p id="errorMsg" class="text-red-500 text-xs text-center hidden">خطأ: بيانات غير صالحة!</p>
                 </form>
             </div>
         </div>
 
-        <div id="page-profile" class="page-section">
-            <div class="max-w-4xl mx-auto glass-card p-10 border-r-4 border-green-500 shadow-2xl">
-                <div class="flex justify-between items-center border-b border-zinc-800 pb-6 mb-6">
-                    <h2 class="text-3xl font-black font-cyber text-green-500 uppercase tracking-tighter italic">AGENT_DOSSIER: 207-74</h2>
-                    <span class="bg-green-900/30 text-green-500 text-[10px] px-2 py-1 border border-green-500 font-cyber">LEVEL: ALPHA</span>
-                </div>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="space-y-4 text-right">
-                        <p class="text-blue-400 font-bold">الاسم الحركي: <span class="text-white">SHADOW WALKER</span></p>
-                        <p class="text-blue-400 font-bold">تاريخ التفعيل: <span class="text-white">2024/05/12</span></p>
-                        <p class="text-blue-400 font-bold">الحالة: <span class="text-green-500 animate-pulse">مخترق (ONLINE)</span></p>
+        <div id="page-profile" class="page-section pt-10">
+            <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl">
+                <h2 class="text-3xl font-black font-cyber text-green-500 mb-6 uppercase">AGENT_FILE: 207-74-9724</h2>
+                <div class="grid md:grid-cols-2 gap-10 text-right">
+                    <div class="space-y-4">
+                        <p class="text-blue-400 font-bold">الاسم: <span class="text-white">SHADOW_WALKER</span></p>
+                        <p class="text-blue-400 font-bold">الصلاحية: <span class="text-white">ALPHA_LEVEL</span></p>
+                        <p class="text-blue-400 font-bold">الحالة: <span class="text-green-500 animate-pulse">ONLINE</span></p>
                     </div>
-                    <div class="bg-blue-900/20 p-6 rounded border border-blue-900/40">
-                        <h4 class="text-blue-500 font-bold mb-4 border-b border-blue-900 pb-2">الملفات المسربة المتاحة لك:</h4>
-                        <ul class="text-sm text-gray-300 space-y-3 text-right">
-                            <li class="hover:text-white cursor-pointer transition">📂 أرشيف المنطقة 51 (سري للغاية)</li>
-                            <li class="hover:text-white cursor-pointer transition">📂 بيانات البنك المركزي (مشفرة)</li>
-                            <li class="hover:text-white cursor-pointer transition text-red-400">📂 بروتوكولات تدمير الخوادم</li>
+                    <div class="bg-blue-900/10 p-6 rounded border border-blue-900/40">
+                        <h4 class="text-blue-500 font-bold mb-4">الملفات المتاحة لك:</h4>
+                        <ul class="text-xs text-gray-400 space-y-3">
+                            <li class="underline cursor-pointer hover:text-white italic">● أرشيف المنطقة 51</li>
+                            <li class="underline cursor-pointer hover:text-white italic">● قاعدة بيانات البنوك</li>
                         </ul>
                     </div>
                 </div>
@@ -135,11 +77,10 @@
     </main>
 
     <script>
-        // --- 1. كود مطر الماتريكس ---
+        // كود المطر
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アァカサタナハマヤ';
         const fontSize = 16;
         const columns = canvas.width / fontSize;
@@ -147,8 +88,7 @@
         function draw() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
+            ctx.fillStyle = '#0F0'; ctx.font = fontSize + 'px monospace';
             for (let i = 0; i < rainDrops.length; i++) {
                 const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
                 ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
@@ -158,52 +98,36 @@
         }
         setInterval(draw, 35);
 
-        // --- 2. نظام التنقل ---
+        // التنقل بين الصفحات
         function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(s => s.style.display = 'none');
-            const target = document.getElementById('page-' + pageId);
-            if (target) {
-                target.style.display = 'block';
-                target.classList.add('page-active');
-            }
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
+            document.getElementById('page-' + pageId).classList.add('page-active');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-active'));
-            const link = document.getElementById('link-' + pageId);
-            if (link) link.classList.add('nav-active');
+            if(document.getElementById('link-' + pageId)) document.getElementById('link-' + pageId).classList.add('nav-active');
             document.querySelector('main').scrollTo(0,0);
         }
 
-        // --- 3. نظام تسجيل الدخول ---
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        // تسجيل الدخول
+        document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
-            const user = document.getElementById('userInput').value.trim();
-            const pass = document.getElementById('passInput').value.trim();
-            const errorMsg = document.getElementById('loginError');
-
-            // البيانات الخاصة بك
-            if (user === '207-74-9724' && pass === 'S01H7ERI19NN70') {
-                errorMsg.classList.add('hidden');
+            const u = document.getElementById('userInput').value.trim();
+            const p = document.getElementById('passInput').value.trim();
+            
+            if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
                 document.getElementById('nav-login').classList.add('hidden');
                 document.getElementById('nav-profile').classList.remove('hidden');
                 document.getElementById('nav-logout').classList.remove('hidden');
                 showPage('profile');
             } else {
-                errorMsg.classList.remove('hidden');
-                errorMsg.innerText = "ACCESS DENIED: INVALID AGENT KEY";
+                document.getElementById('errorMsg').classList.remove('hidden');
             }
-        });
+        };
 
         function logout() {
-            document.getElementById('nav-login').classList.remove('hidden');
-            document.getElementById('nav-profile').classList.add('hidden');
-            document.getElementById('nav-logout').classList.add('hidden');
-            showPage('home');
-            window.location.reload(); // إعادة تشغيل النظام للأمان
+            window.location.reload(); // إعادة تشغيل الموقع لتنظيف البيانات
         }
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
     </script>
 </body>
 </html>
