@@ -6,17 +6,22 @@
     <title>DARK_WEB_COMPLETE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    /* كود الضوء الأخضر والأحمر المتتالي */
-.emergency-light {
-    animation: alertBlink 0.3s infinite !important;
-}
 
-@keyframes alertBlink {
-    0% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; } /* أخضر */
-    50% { background-color: #ef4444; box-shadow: 0 0 15px #ef4444; } /* أحمر */
-    100% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; } /* أخضر */
-}
     <style>
+        /* كود الضوء الأخضر والأحمر المتتالي - تم نقله هنا */
+        .emergency-light {
+            animation: alertBlink 0.3s infinite !important;
+        }
+
+        @keyframes alertBlink {
+            0% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
+            50% { background-color: #ef4444; box-shadow: 0 0 15px #ef4444; }
+            100% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
+        }
+
+        /* التنسيقات القديمة تبدأ من هنا */
+        body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
         body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
         #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.6; }
