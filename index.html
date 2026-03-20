@@ -259,19 +259,24 @@ function startDecryption() {
     let p = 0;
     const b = document.getElementById('progressBar');
     const t = document.getElementById('percentText');
-    const light = document.querySelector('.animate-pulse'); // نحدد مكان الضوء
+    // هنا نقوم بربط الدائرة التي أضفت لها ID
+    const light = document.getElementById('statusLight'); 
     
     if(!b || !t) return;
     
     const intv = setInterval(() => {
         p += Math.random() * 0.4;
         
-        // التوقف عند 91%
+        // الشرط: عند الوصول لـ 91% يتوقف العداد ويبدأ الوميض
         if (p >= 91) { 
             p = 91.00; 
             clearInterval(intv); 
-            // تشغيل حركة "الضوء الخطر" (أخضر وأحمر)
-            if(light) light.classList.add('emergency-light');
+            
+            if(light) {
+                // نزيل النبض العادي ونضيف الوميض (الأحمر والأخضر)
+                light.classList.remove('animate-pulse'); 
+                light.classList.add('emergency-light');  
+            }
         }
         
         b.style.width = p + '%'; 
