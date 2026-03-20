@@ -302,11 +302,14 @@ function closeFullProfile() {
     document.getElementById('fullProfileModal').classList.add('hidden');
 }
     </script>
-<div id="fullProfileModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 backdrop-blur-sm">
-    <div class="glass-box max-w-2xl w-full p-8 border border-blue-500 relative shadow-[0_0_30px_#2563eb]">
+<div id="fullProfileModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+    
+    <div class="glass-box max-w-2xl w-full p-8 border border-blue-500 relative">
+        
         <button onclick="closeFullProfile()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
         
         <div class="flex flex-col md:flex-row items-center gap-8 text-right" dir="rtl">
+            
             <div class="w-48 h-64 rounded-lg border-2 border-blue-500 overflow-hidden shadow-[0_0_15px_#2563eb]">
                 <img src="https://seyvakfi.org/cdn/shop/files/sirin-karadeniz.jpg?crop=center&height=300&v=1745942708&width=300" 
                      alt="شيرين" 
@@ -314,17 +317,15 @@ function closeFullProfile() {
             </div>
             
             <div class="flex-1">
-                <h3 class="text-2xl font-black text-blue-500 mb-6 border-b border-blue-900 pb-2 font-cyber italic">IDENTIFICATION_CARD</h3>
+                <h3 class="text-2xl font-black text-blue-500 mb-6 border-b border-blue-900 pb-2">البطاقة التعريفية</h3>
                 <ul class="space-y-4 text-gray-200">
-                    <li class="border-b border-zinc-800 pb-1"><span class="text-blue-400 font-bold ml-2">الاسم:</span> شيرين كارادينيز أوران</li>
-                    <li class="border-b border-zinc-800 pb-1"><span class="text-blue-400 font-bold ml-2">تاريخ الميلاد:</span> 25 أبريل 1977</li>
-                    <li class="border-b border-zinc-800 pb-1"><span class="text-blue-400 font-bold ml-2">العمر:</span> 48 عاماً</li>
-                    <li class="border-b border-zinc-800 pb-1"><span class="text-blue-400 font-bold ml-2">الإقامة:</span> إسطنبول، تركيا</li>
-                    <li><span class="text-blue-400 font-bold ml-2">العمل:</span> جامعة بهتشه شهير (BAU) & جامعة دوغوش</li>
-                </ul>
+                    <li><span class="text-blue-400 font-bold ml-2">الاسم:</span> شيرين كارادينيز أوران</li>
+                    <li><span class="text-blue-400 font-bold ml-2">العمر:</span> 48 عاماً</li>
+                    </ul>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </body>
