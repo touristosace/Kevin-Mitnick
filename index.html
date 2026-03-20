@@ -31,8 +31,7 @@
         .nav-link { cursor: pointer; transition: 0.3s; padding: 5px 10px; }
         .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
         .glass-box { background: rgba(5, 5, 5, 0.9); border: 1px solid #1e3a8a; backdrop-filter: blur(10px); border-radius: 8px; }
-        main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }
-        ::-webkit-scrollbar { width: 5px; }
+main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 1; }        ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #1e3a8a; }
     </style>
 </head>
@@ -302,7 +301,12 @@ function closeFullProfile() {
     document.getElementById('fullProfileModal').classList.add('hidden');
 }
     </script>
-<div id="fullProfileModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
+
+    </div>
+</div>
+</div>
+</div>
+    <div id="fullProfileModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
     
     <div class="glass-box max-w-2xl w-full p-8 border border-blue-500 relative">
         
@@ -324,9 +328,5 @@ function closeFullProfile() {
                     </ul>
             </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
 </body>
 </html>
