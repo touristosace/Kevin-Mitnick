@@ -148,45 +148,38 @@
 
 <div id="page-profile" class="page-section pt-10">
     <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 p-2 opacity-10 font-cyber text-xs">SWISS_BANK_LINK_ESTABLISHED</div>
+        <h2 class="text-3xl font-black font-cyber text-green-500 mb-8 border-b border-green-900/50 pb-4 italic uppercase">Agent_Dossier</h2>
         
-        <h2 class="text-3xl font-black font-cyber text-green-500 mb-8 uppercase tracking-tighter italic border-b border-green-900/50 pb-4">
-            CENTRAL_DATABASE_ACCESS
-        </h2>
-        
-        <div class="grid md:grid-cols-1 gap-8 text-right">
-            <div class="space-y-6">
-                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">FULL_NAME</span>
-                    <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
-                </div>
-
-                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">REQUEST_TYPE</span>
-                    <p class="text-lg text-gray-300">فك حجز مالي تابع للبنك المركزي سويسرا</p>
-                </div>
-
-                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">APPROVAL_STATUS</span>
-                    <p class="text-lg text-green-500 font-bold italic">معتمد لدينا</p>
-                </div>
-
-                <div class="flex items-center justify-between bg-green-900/10 p-4 rounded-lg border border-green-900/30">
-                    <span class="text-blue-400 font-bold font-cyber text-xs uppercase">OPERATION_PROGRESS</span>
-                    <div class="flex items-center space-x-reverse space-x-3">
-                        <p class="text-xl text-white font-black">قيد التنفيذ</p>
-                        <div class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e] animate-pulse"></div>
-                    </div>
-                </div>
+        <div class="grid gap-6 text-right">
+            <div class="flex justify-between border-b border-zinc-800 pb-2">
+                <span class="text-blue-500 font-cyber text-[10px]">FULL_NAME</span>
+                <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
+            </div>
+            <div class="flex justify-between border-b border-zinc-800 pb-2">
+                <span class="text-blue-500 font-cyber text-[10px]">REQUEST</span>
+                <p class="text-lg text-gray-300">فك حجز مالي تابع للبنك المركزي سويسرا</p>
+            </div>
+            <div class="flex justify-between border-b border-zinc-800 pb-2">
+                <span class="text-blue-500 font-cyber text-[10px]">STATUS</span>
+                <p class="text-lg text-green-500 font-bold italic">معتمد لدينا</p>
             </div>
 
-            <div class="mt-4 p-4 bg-red-900/10 border border-red-900/20 rounded">
-                <p class="text-[10px] text-red-500 font-cyber text-center uppercase tracking-widest">
-                    WARNING: Unauthorized access to Swiss Central Bank nodes is strictly prohibited.
-                </p>
+            <div class="bg-green-900/10 p-6 rounded border border-green-900/40 mt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-blue-400 font-cyber text-[10px]">SWISS_DECRYPTION</span>
+                    <div class="flex items-center space-x-reverse space-x-3">
+                        <p class="text-xl text-white font-black">قيد التنفيذ</p>
+                        <div class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_15px_#22c55e] animate-pulse"></div>
+                    </div>
+                </div>
+                <div class="w-full bg-black/50 h-2 rounded-full mb-2">
+                    <div id="progressBar" class="h-full bg-green-500 shadow-[0_0_10px_#22c55e] transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <div class="text-[10px] font-cyber text-green-500">PROGRESS: <span id="percentText">0.00</span>%</div>
             </div>
         </div>
     </div>
+</div>
 </div>
     </main>
 
