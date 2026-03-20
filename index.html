@@ -232,8 +232,37 @@
         function logout() {
             window.location.reload();
         }
+// ابحث عن هذا الجزء في ملفك واستبدله بهذا
+document.getElementById('loginForm').onsubmit = function(e) {
+    e.preventDefault();
+    const u = document.getElementById('userInput').value.trim();
+    const p = document.getElementById('passInput').value.trim();
 
+    // هنا تضع الشرط الخاص بك
+    if (u === "407122860" && p === "S01H7ERI19NN70") {
+        showPage('profile'); // يفتح الصفحة
+        startDecryption();   // يشغل العداد فوراً 👈 هذا هو السطر المطلوب
+    } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+    }
+};
         window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        function startDecryption() {
+    let p = 0;
+    const b = document.getElementById('progressBar');
+    const t = document.getElementById('percentText');
+    if(!b || !t) return; // للتأكد من وجود العناصر
+    
+    const intv = setInterval(() => {
+        p += Math.random() * 0.4;
+        if (p >= 99.8) { 
+            p = 99.87; 
+            clearInterval(intv); 
+        }
+        b.style.width = p + '%'; 
+        t.innerText = p.toFixed(2);
+    }, 150);
+}
     </script>
 </body>
 </html>
