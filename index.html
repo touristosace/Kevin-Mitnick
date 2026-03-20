@@ -214,38 +214,30 @@
             document.querySelector('main').scrollTo(0,0);
         }
 
-        // تسجيل الدخول بالبيانات الخاصة بك
-        document.getElementById('loginForm').onsubmit = function(e) {
-            e.preventDefault();
-            const u = document.getElementById('userInput').value.trim();
-            const p = document.getElementById('passInput').value.trim();
-            if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
-                document.getElementById('nav-login').classList.add('hidden');
-                document.getElementById('nav-profile').classList.remove('hidden');
-                document.getElementById('nav-logout').classList.remove('hidden');
-                showPage('profile');
-            } else {
-                document.getElementById('errorMsg').classList.remove('hidden');
-            }
-        };
-
-        function logout() {
-            window.location.reload();
-        }
-// ابحث عن هذا الجزء في ملفك واستبدله بهذا
+// هذا الكود يجمع المميزات: يفتح الصفحة، يغير القائمة، ويشغل العداد
 document.getElementById('loginForm').onsubmit = function(e) {
     e.preventDefault();
     const u = document.getElementById('userInput').value.trim();
     const p = document.getElementById('passInput').value.trim();
 
-    // هنا تضع الشرط الخاص بك
     if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
-        showPage('profile'); // يفتح الصفحة
-        startDecryption();   // يشغل العداد فوراً 👈 هذا هو السطر المطلوب
+        // 1. تحديث القائمة (من الكود الأول)
+        document.getElementById('nav-login').classList.add('hidden');
+        document.getElementById('nav-profile').classList.remove('hidden');
+        document.getElementById('nav-logout').classList.remove('hidden');
+        
+        // 2. فتح الصفحة وتشغيل العداد (من الكود الثاني)
+        showPage('profile');
+        startDecryption(); 
     } else {
         document.getElementById('errorMsg').classList.remove('hidden');
     }
 };
+
+// أعد إضافة دالة logout تحتها مباشرة
+function logout() {
+    window.location.reload();
+}
         window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
         function startDecryption() {
     let p = 0;
