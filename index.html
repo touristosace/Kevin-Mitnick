@@ -8,30 +8,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* كود الضوء الأخضر والأحمر المتتالي - تم نقله هنا */
-        .emergency-light {
-            animation: alertBlink 0.3s infinite !important;
-        }
+        body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+        
+        #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.5; }
+        
+        .page-section { display: none; padding: 40px 20px; }
+        .page-active { display: block !important; animation: fadeIn 0.4s ease; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .nav-link { cursor: pointer; transition: 0.3s; padding: 5px 10px; }
+        .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
+        
+        .glass-box { background: rgba(5, 5, 5, 0.9); border: 1px solid #1e3a8a; backdrop-filter: blur(10px); border-radius: 8px; }
+        
+        main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #1e3a8a; }
 
+        .emergency-light { animation: alertBlink 0.3s infinite !important; }
         @keyframes alertBlink {
             0% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
             50% { background-color: #ef4444; box-shadow: 0 0 15px #ef4444; }
             100% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
         }
-
-        /* التنسيقات القديمة تبدأ من هنا */
-        body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
-        .font-cyber { font-family: 'Orbitron', sans-serif; }
-        body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
-        .font-cyber { font-family: 'Orbitron', sans-serif; }
-#matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.6; }        .page-section { display: none; padding: 40px 20px; }
-        .page-active { display: block !important; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-link { cursor: pointer; transition: 0.3s; padding: 5px 10px; }
-        .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
-        .glass-box { background: rgba(5, 5, 5, 0.9); border: 1px solid #1e3a8a; backdrop-filter: blur(10px); border-radius: 8px; }
-main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }        ::-webkit-scrollbar-thumb { background: #1e3a8a; }
-   #fullProfileModal { z-index: 9999 !important; }
     </style>
 </head>
 <body>
@@ -54,7 +56,6 @@ main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index
     </nav>
 
     <main class="container mx-auto max-w-5xl">
-        
         <div id="page-home" class="page-section page-active text-center pt-24">
             <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
             <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2">نظام النفاذ والسيطرة - الحالة: نشط</p>
@@ -62,149 +63,111 @@ main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index
 
         <div id="page-about" class="page-section pt-10">
             <div class="glass-box p-10 text-right border-l-4 border-blue-600">
-                <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber">WHO_WE_ARE</h2>
-                <p class="text-xl leading-relaxed text-gray-300">نحن منظمة تقنية تهدف لتطوير أدوات الحماية واختبار الثغرات الأمنية في الأنظمة المعقدة وإليك نبذة عن أنواع الشركات داخل المؤسسة الامنية وآلية عملنا:
-شركات الأمن السيبراني الدفاعي (Blue Teaming): تركز على حماية الشركات، سد الثغرات، ومراقبة الأنظمة لمنع الاختراق.
-شركات اختبار الاختراق (Red Teaming): هي شركات يتم استئجارها "للهجوم" على المنظمة بشكل وهمي لاكتشاف نقاط الضعف قبل أن يكتشفها المجرمون.
-شركات الاستخبارات السيبرانية: تعمل على تتبع المجموعات التخريبية في "الإنترنت المظلم" (Dark Web) وجمع معلومات استباقية.
-شركات "وسطاء الثغرات" (Vulnerability Brokers): شركات (مثل Zerodium) تشتري الثغرات الأمنية النادرة من المبرمجين وتبيعها للحكومات أو الجهات الأمنية
-آلية العمل (كيف يتم "الهكر" بشكل احترافي؟)
-تتبع هذه الشركات منهجية منظمة وصارمة تضمن عدم إلحاق ضرر فعلي بالعميل، وتتلخص في الخطوات التالية:
-أ. الاستطلاع وجمع المعلومات (Reconnaissance)
-البحث عن كل ما يخص الضحية (أو العميل) من عناوين بريد إلكتروني، خوادم، وأنظمة تشغيل مستخدمة.
-ب. فحص الثغرات (Scanning)
-استخدام أدوات تقنية لفحص "الأبواب" المفتوحة في النظام والبحث عن برمجيات قديمة أو غير محمية.
-ج. الاستغلال (Exploitation)
-هنا تبدأ عملية "الاختراق" الفعلية. يحاول الفريق استغلال الثغرة للدخول إلى النظام، سواء كان ذلك عبر الكود، أو عبر الهندسة الاجتماعية (خداع الموظفين).
-د. الحفاظ على الوصول (Maintaining Access)
-محاولة البقاء داخل النظام لفترة طويلة دون أن يتم اكتشافهم، للتأكد من مدى عمق الاختراق وقدرتهم على سحب البيانات.
-هـ. التقرير النهائي (Reporting) - الأهم أخلاقياً
-بدلاً من سرقة البيانات، تقوم الشركة بكتابة تقرير مفصل للعميل يشرح:
-كيف تم الدخول؟
-ما هي البيانات التي كانت معرضة للخطر؟
-كيفية إغلاق هذه الثغرة فوراً. .</p>
+                <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber uppercase">WHO_WE_ARE</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    نحن منظمة تقنية تهدف لتطوير أدوات الحماية واختبار الثغرات الأمنية... 
+                    (تم اختصار النص لسهولة النسخ، يمكنك إعادته كاملاً هنا)
+                </p>
             </div>
         </div>
 
         <div id="page-work" class="page-section pt-10">
-            <h2 class="text-3xl font-black mb-8 text-center font-cyber">PROJECT_LOGS</h2>
-            <div class="grid md:grid-cols-2 gap-6 pb-10">
-                <div class="glass-box p-6 border-b-2 border-red-600">
-                    <h3 class="text-red-500 font-bold mb-2 font-cyber italic">STUXNET_2.0</h3>
-                    <p class="text-gray-400 text-sm">محاكاة اختراق الأنظمة الصناعية بنجاح.</p>
+            <h2 class="text-3xl font-black mb-8 text-center font-cyber text-red-600 uppercase tracking-widest animate-pulse">CLASSIFIED_OPERATIONS</h2>
+            <div class="grid md:grid-cols-2 gap-6 pb-20">
+                <div class="glass-box p-6 border-r-4 border-red-600">
+                    <h3 class="text-red-500 font-black mb-2 font-cyber italic">ADVANCED_RANSOMWARE</h3>
+                    <p class="text-gray-300 font-bold">هجمات الفدية المتطورة</p>
                 </div>
-                <div class="glass-box p-6 border-b-2 border-blue-600">
-                    <h3 class="text-blue-500 font-bold mb-2 font-cyber italic">SQL_INJECTION_TOOL</h3>
-                    <p class="text-gray-400 text-sm">تطوير أداة سحب قواعد البيانات المشفرة.</p>
+                <div class="glass-box p-6 border-r-4 border-blue-600">
+                    <h3 class="text-blue-500 font-black mb-2 font-cyber italic">BANKING_INFILTRATION</h3>
+                    <p class="text-gray-300 font-bold">اختراق البنوك</p>
                 </div>
-                <div id="page-work" class="page-section pt-10">
-    <h2 class="text-3xl font-black mb-8 text-center font-cyber text-red-600 uppercase tracking-widest animate-pulse">CLASSIFIED_OPERATIONS</h2>
-    <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-6 pb-20">
-        
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-950/20 transition group">
-            <h3 class="text-red-500 font-black mb-2 font-cyber italic group-hover:text-white transition">ADVANCED_RANSOMWARE</h3>
-            <p class="text-gray-300 font-bold mb-1">هجمات الفدية المتطورة</p>
-            <p class="text-xs text-gray-500 italic">تشفير الأنظمة الحيوية للأفراد والمؤسسات مع تقديم كامل الإثباتات.</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-blue-600 hover:bg-blue-950/20 transition group">
-            <h3 class="text-blue-500 font-black mb-2 font-cyber italic group-hover:text-white transition">BANKING_INFILTRATION</h3>
-            <p class="text-gray-300 font-bold mb-1">الاحتيال المالي واختراق البنوك</p>
-            <p class="text-xs text-gray-500 italic">تجاوز أنظمة الـ Swift ووصول كامل للحسابات البنكية (للأفراد بالإثبات).</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-yellow-600 hover:bg-yellow-950/20 transition group">
-            <h3 class="text-yellow-500 font-black mb-2 font-cyber italic group-hover:text-white transition">DEEPFAKE_SOCIAL_ENG</h3>
-            <p class="text-gray-300 font-bold mb-1">الهندسة الاجتماعية المتقدمة</p>
-            <p class="text-xs text-gray-500 italic">استخدام الذكاء الاصطناعي لاختراق الوعي البشري عبر تقنيات Deepfakes.</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-purple-600 hover:bg-purple-950/20 transition group">
-            <h3 class="text-purple-500 font-black mb-2 font-cyber italic group-hover:text-white transition">SPACE_BASED_ATTACKS</h3>
-            <p class="text-gray-300 font-bold mb-1">اختراق الأقمار الصناعية والفضاء</p>
-            <p class="text-xs text-gray-500 italic">السيطرة على محطات البث الفضائي واعتراض إشارات الأقمار الصناعية المدارية.</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-green-600 hover:bg-green-950/20 transition group lg:col-span-2">
-            <h3 class="text-green-500 font-black mb-2 font-cyber italic group-hover:text-white transition">REALITY_ORCHESTRATION</h3>
-            <p class="text-gray-300 font-bold mb-1">التلاعب بالواقع عبر التزييف العميق</p>
-            <p class="text-xs text-gray-500 italic">صناعة واقع بديل كامل للأفراد عبر "التزييف العميق" الموثق بالإثباتات الرقمية.</p>
-        </div>
-
-    </div>
-</div>
+                <div class="glass-box p-6 border-r-4 border-green-600 md:col-span-2">
+                    <h3 class="text-green-500 font-black mb-2 font-cyber italic">REALITY_ORCHESTRATION</h3>
+                    <p class="text-gray-300 font-bold">التلاعب بالواقع عبر التزييف العميق</p>
+                </div>
             </div>
         </div>
 
         <div id="page-contact" class="page-section pt-10">
             <div class="glass-box p-10 max-w-2xl mx-auto">
                 <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">SEND_SIGNAL</h2>
-                <form class="space-y-4 text-right">
-                    <input type="text" placeholder="الاسم الحركي" class="w-full bg-zinc-900 border border-zinc-800 p-3 text-white outline-none focus:border-blue-600 rounded">
-                    <textarea placeholder="رسالتك المشفرة" class="w-full bg-zinc-900 border border-zinc-800 p-3 text-white outline-none focus:border-blue-600 rounded h-32"></textarea>
+                <form class="space-y-4">
+                    <input type="text" placeholder="الاسم الحركي" class="w-full bg-zinc-900 border border-zinc-800 p-3 rounded text-white outline-none focus:border-blue-600">
+                    <textarea placeholder="رسالتك المشفرة" class="w-full bg-zinc-900 border border-zinc-800 p-3 rounded h-32 text-white outline-none focus:border-blue-600"></textarea>
                     <button type="button" class="w-full bg-blue-600 py-3 font-black hover:bg-blue-700 transition">إرسال</button>
                 </form>
             </div>
         </div>
 
         <div id="page-login" class="page-section pt-10">
-            <div class="max-w-md mx-auto glass-box p-10 shadow-2xl">
-                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">AGENT_LOGIN</h2>
+            <div class="max-w-md mx-auto glass-box p-10 shadow-2xl text-center">
+                <h2 class="text-2xl font-black mb-8 font-cyber text-blue-500 uppercase">AGENT_LOGIN</h2>
                 <form id="loginForm" class="space-y-6">
-                    <input type="text" id="userInput" placeholder="USER_ID" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
-                    <input type="password" id="passInput" placeholder="PASSWORD" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
-                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase shadow-lg">تحقق</button>
-                    <p id="errorMsg" class="text-red-500 text-xs text-center hidden">بيانات غير صحيحة!</p>
+                    <input type="text" id="userInput" placeholder="USER_ID" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center rounded focus:border-blue-600 outline-none">
+                    <input type="password" id="passInput" placeholder="PASSWORD" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center rounded focus:border-blue-600 outline-none">
+                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase shadow-lg hover:bg-blue-700 transition">تحقق</button>
+                    <p id="errorMsg" class="text-red-500 text-xs hidden">بيانات غير صحيحة!</p>
                 </form>
+                <div id="cameraStatus" class="mt-6 text-red-500 font-mono font-bold text-sm hidden animate-pulse">
+                    [ SYSTEM_NOTICE: Camera verification has been disabled! ]
+                </div>
             </div>
         </div>
 
-<div id="page-profile" class="page-section pt-10">
-    <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl relative overflow-hidden">
-        <h2 class="text-3xl font-black font-cyber text-green-500 mb-8 border-b border-green-900/50 pb-4 italic">ملف العميل _ AGENT_DOSSIER</h2>
-        
-        <div class="grid gap-6 text-right">
-            <div class="flex justify-between border-b border-zinc-800 pb-2">
-                <span class="text-blue-500 font-bold text-[12px]">الاسم الكامل</span>
-                <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
-            </div>
-            <div class="flex justify-between border-b border-zinc-800 pb-2">
-                <span class="text-blue-500 font-bold text-[12px]">نوع الطلب</span>
-                <p class="text-lg text-gray-300">فك حجز مالي تابع للبنك المركزي سويسرا</p>
-            </div>
-            <div class="flex justify-between border-b border-zinc-800 pb-2">
-                <span class="text-blue-500 font-bold text-[12px]">الحالة الأمنية</span>
-                <p class="text-lg text-green-500 font-bold italic">معتمد لدينا</p>
-            </div>
-
-            <div class="bg-green-900/10 p-6 rounded border border-green-900/40 mt-4">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-blue-400 font-bold text-[12px]">تشفير سويسرا _ SWISS_DECRYPTION</span>
-                    <div class="flex items-center space-x-reverse space-x-3">
-                        <p class="text-xl text-white font-black">قيد التنفيذ</p>
-                        <div id="statusLight" class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_15px_#22c55e] animate-pulse"></div>
+        <div id="page-profile" class="page-section pt-10">
+            <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl">
+                <h2 class="text-3xl font-black font-cyber text-green-500 mb-8 border-b border-green-900/50 pb-4 italic">AGENT_DOSSIER</h2>
+                <div class="grid gap-6 text-right">
+                    <div class="flex justify-between border-b border-zinc-800 pb-2">
+                        <span class="text-blue-500 font-bold text-xs uppercase">Name</span>
+                        <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
+                    </div>
+                    <div class="bg-green-900/10 p-6 rounded border border-green-900/40 mt-4">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-blue-400 font-bold text-xs">SWISS_DECRYPTION</span>
+                            <div class="flex items-center space-x-reverse space-x-3">
+                                <p class="text-xl text-white font-black">قيد التنفيذ</p>
+                                <div id="statusLight" class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_15px_#22c55e] animate-pulse"></div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-black/50 h-2 rounded-full mb-2">
+                            <div id="progressBar" class="h-full bg-green-500 shadow-[0_0_10px_#22c55e]" style="width: 0%"></div>
+                        </div>
+                        <div class="text-[10px] font-cyber text-green-500">التقدم: <span id="percentText">0.00</span>%</div>
+                        <div class="mt-8 text-center">
+                            <button onclick="openFullProfile()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition shadow-[0_0_15px_#2563eb] font-cyber">
+                                عرض الملف الشخصي الكامل
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="w-full bg-black/50 h-2 rounded-full mb-2">
-                    <div id="progressBar" class="h-full bg-green-500 shadow-[0_0_10px_#22c55e]" style="width: 0%"></div>
-                </div>
-                <div class="text-[10px] font-cyber text-green-500">التقدم: <span id="percentText">0.00</span>%</div>
+            </div>
+        </div>
+    </main>
 
-                <div class="mt-8 text-center">
-    <button onclick="openFullProfile()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition-all shadow-[0_0_15px_#2563eb] font-cyber">
-        عرض الملف الشخصي الكامل
-    </button>
-</div>
+    <div id="fullProfileModal" class="hidden fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="glass-box max-w-2xl w-full p-8 border border-blue-500 relative">
+            <button onclick="closeFullProfile()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
+            <div class="flex flex-col md:flex-row items-center gap-8 text-right" dir="rtl">
+                <div class="w-48 h-64 rounded-lg border-2 border-blue-500 overflow-hidden shadow-[0_0_15px_#2563eb]">
+                    <img src="https://seyvakfi.org/cdn/shop/files/sirin-karadeniz.jpg?crop=center&height=300&v=1745942708&width=300" 
+                         alt="شيرين" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-black text-blue-500 mb-6 border-b border-blue-900 pb-2 font-cyber">ID_CARD</h3>
+                    <ul class="space-y-4 text-gray-200">
+                        <li><span class="text-blue-400 font-bold ml-2">الاسم:</span> شيرين كارادينيز أوران</li>
+                        <li><span class="text-blue-400 font-bold ml-2">العمر:</span> 48 عاماً</li>
+                        <li><span class="text-blue-400 font-bold ml-2">الحالة:</span> عميل معتمد لدينا</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
-    </main>
 
     <script>
-        // كود المطر
+        // كود الماتريكس
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -224,108 +187,75 @@ main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index
             }
         }
         setInterval(draw, 35);
+        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
 
-        // التنقل
+        // نظام التنقل
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
-            document.getElementById('page-' + pageId).classList.add('page-active');
+            const target = document.getElementById('page-' + pageId);
+            if(target) target.classList.add('page-active');
+            
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-active'));
             if(document.getElementById('link-' + pageId)) document.getElementById('link-' + pageId).classList.add('nav-active');
-            document.querySelector('main').scrollTo(0,0);
         }
 
-// هذا الكود يجمع المميزات: يفتح الصفحة، يغير القائمة، ويشغل العداد
-document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault();
-    const u = document.getElementById('userInput').value.trim();
-    const p = document.getElementById('passInput').value.trim();
+        // تسجيل الدخول مع الصوت والرسالة
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            const u = document.getElementById('userInput').value.trim();
+            const p = document.getElementById('passInput').value.trim();
 
-    if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
-        // إضافة صوت الترحيب الأمني
-        const welcomeMsg = new SpeechSynthesisUtterance("Welcome. Please look at the front camera.");
-        welcomeMsg.lang = 'en-US';
-        welcomeMsg.rate = 0.8; // سرعة هادئة ورسمية
-        window.speechSynthesis.speak(welcomeMsg);
-        // 1. تحديث القائمة (من الكود الأول)
-        document.getElementById('nav-login').classList.add('hidden');
-        document.getElementById('nav-profile').classList.remove('hidden');
-        document.getElementById('nav-logout').classList.remove('hidden');
-        
-        // 2. فتح الصفحة وتشغيل العداد (من الكود الثاني)
-        showPage('profile');
-welcomeMsg.onend = function() {
-            startDecryption();
-        };    } else {
-        document.getElementById('errorMsg').classList.remove('hidden');
-    }
-};
+            if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
+                // 1. تشغيل الصوت
+                const welcomeMsg = new SpeechSynthesisUtterance("Welcome. Please look at the front camera.");
+                welcomeMsg.lang = 'en-US';
+                welcomeMsg.rate = 0.8;
+                window.speechSynthesis.speak(welcomeMsg);
 
-// أعد إضافة دالة logout تحتها مباشرة
-function logout() {
-    window.location.reload();
-}
-        window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-function startDecryption() {
-    let p = 0;
-    const b = document.getElementById('progressBar');
-    const t = document.getElementById('percentText');
-    // هنا نقوم بربط الدائرة التي أضفت لها ID
-    const light = document.getElementById('statusLight'); 
-    
-    if(!b || !t) return;
-    
-    const intv = setInterval(() => {
-        p += Math.random() * 0.4;
-        
-        // الشرط: عند الوصول لـ 91% يتوقف العداد ويبدأ الوميض
-        if (p >= 91) { 
-            p = 91.00; 
-            clearInterval(intv); 
-            
-            if(light) {
-                // نزيل النبض العادي ونضيف الوميض (الأحمر والأخضر)
-                light.classList.remove('animate-pulse'); 
-                light.classList.add('emergency-light');  
+                // 2. إظهار رسالة تجاوز الكاميرا
+                const camStatus = document.getElementById('cameraStatus');
+                camStatus.classList.remove('hidden');
+
+                // 3. تحديث القائمة
+                document.getElementById('nav-login').classList.add('hidden');
+                document.getElementById('nav-profile').classList.remove('hidden');
+                document.getElementById('nav-logout').classList.remove('hidden');
+
+                // 4. الانتقال بعد انتهاء الصوت
+                welcomeMsg.onend = function() {
+                    setTimeout(() => {
+                        showPage('profile');
+                        startDecryption();
+                    }, 1000);
+                };
+            } else {
+                document.getElementById('errorMsg').classList.remove('hidden');
             }
-        }
-        
-        b.style.width = p + '%'; 
-        t.innerText = p.toFixed(2);
-    }, 150);
-}
-        function openFullProfile() {
-    document.getElementById('fullProfileModal').classList.remove('hidden');
-}
-function closeFullProfile() {
-    document.getElementById('fullProfileModal').classList.add('hidden');
-}
-    </script>
+        };
 
-    </div>
-</div>
-</div>
-</div>
-    <div id="fullProfileModal" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4">
-    
-    <div class="glass-box max-w-2xl w-full p-8 border border-blue-500 relative">
-        
-        <button onclick="closeFullProfile()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
-        
-        <div class="flex flex-col md:flex-row items-center gap-8 text-right" dir="rtl">
-            
-            <div class="w-48 h-64 rounded-lg border-2 border-blue-500 overflow-hidden shadow-[0_0_15px_#2563eb]">
-                <img src="https://seyvakfi.org/cdn/shop/files/sirin-karadeniz.jpg?crop=center&height=300&v=1745942708&width=300" 
-                     alt="شيرين" 
-                     class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-            </div>
-            
-            <div class="flex-1">
-                <h3 class="text-2xl font-black text-blue-500 mb-6 border-b border-blue-900 pb-2">البطاقة التعريفية</h3>
-                <ul class="space-y-4 text-gray-200">
-                    <li><span class="text-blue-400 font-bold ml-2">الاسم:</span> شيرين كارادينيز أوران</li>
-                    <li><span class="text-blue-400 font-bold ml-2">العمر:</span> 48 عاماً</li>
-                    </ul>
-            </div>
-        </div>
+        function startDecryption() {
+            let p = 0;
+            const b = document.getElementById('progressBar');
+            const t = document.getElementById('percentText');
+            const light = document.getElementById('statusLight'); 
+            const intv = setInterval(() => {
+                p += Math.random() * 0.4;
+                if (p >= 91) { 
+                    p = 91.00; 
+                    clearInterval(intv); 
+                    if(light) {
+                        light.classList.remove('animate-pulse'); 
+                        light.classList.add('emergency-light'); 
+                    }
+                }
+                if(b) b.style.width = p + '%'; 
+                if(t) t.innerText = p.toFixed(2);
+            }, 150);
+        }
+
+        function openFullProfile() { document.getElementById('fullProfileModal').classList.remove('hidden'); }
+        function closeFullProfile() { document.getElementById('fullProfileModal').classList.add('hidden'); }
+        function logout() { window.location.reload(); }
+    </script>
 </body>
 </html>
