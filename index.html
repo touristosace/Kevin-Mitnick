@@ -146,22 +146,48 @@
             </div>
         </div>
 
-        <div id="page-profile" class="page-section pt-10">
-            <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500">
-                <h2 class="text-3xl font-black font-cyber text-green-500 mb-6 uppercase">AGENT_DATA: 207-74-9724</h2>
-                <div class="grid md:grid-cols-2 gap-8 text-right">
-                    <div class="space-y-4">
-                        <p class="text-blue-400">الاسم: <span class="text-white">SHADOW_WALKER</span></p>
-                        <p class="text-blue-400">الحالة: <span class="text-green-500 animate-pulse">ACTIVE_SESSION</span></p>
-                    </div>
-                    <div class="bg-blue-900/10 p-4 border border-blue-900/30">
-                        <p class="text-blue-500 font-bold mb-2">الملفات المسربة:</p>
-                        <p class="text-xs text-gray-400 italic underline cursor-pointer">● أرشيف البنك المركزي.zip</p>
+<div id="page-profile" class="page-section pt-10">
+    <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-2 opacity-10 font-cyber text-xs">SWISS_BANK_LINK_ESTABLISHED</div>
+        
+        <h2 class="text-3xl font-black font-cyber text-green-500 mb-8 uppercase tracking-tighter italic border-b border-green-900/50 pb-4">
+            CENTRAL_DATABASE_ACCESS
+        </h2>
+        
+        <div class="grid md:grid-cols-1 gap-8 text-right">
+            <div class="space-y-6">
+                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">FULL_NAME</span>
+                    <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
+                </div>
+
+                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">REQUEST_TYPE</span>
+                    <p class="text-lg text-gray-300">فك حجز مالي تابع للبنك المركزي سويسرا</p>
+                </div>
+
+                <div class="flex items-center justify-between border-b border-zinc-800 pb-2">
+                    <span class="text-blue-500 font-bold font-cyber text-xs uppercase">APPROVAL_STATUS</span>
+                    <p class="text-lg text-green-500 font-bold italic">معتمد لدينا</p>
+                </div>
+
+                <div class="flex items-center justify-between bg-green-900/10 p-4 rounded-lg border border-green-900/30">
+                    <span class="text-blue-400 font-bold font-cyber text-xs uppercase">OPERATION_PROGRESS</span>
+                    <div class="flex items-center space-x-reverse space-x-3">
+                        <p class="text-xl text-white font-black">قيد التنفيذ</p>
+                        <div class="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e] animate-pulse"></div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <div class="mt-4 p-4 bg-red-900/10 border border-red-900/20 rounded">
+                <p class="text-[10px] text-red-500 font-cyber text-center uppercase tracking-widest">
+                    WARNING: Unauthorized access to Swiss Central Bank nodes is strictly prohibited.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
     </main>
 
     <script>
