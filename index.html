@@ -3,32 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL_SYSTEM</title>
+    <title>DARK_WEB_COMPLETE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
         #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.6; }
-        .page-section { display: none; padding: 40px 20px; min-height: 80vh; }
-        .page-active { display: block !important; animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
-        .nav-link { cursor: pointer; padding: 5px 15px; transition: 0.3s; }
+        .page-section { display: none; padding: 40px 20px; }
+        .page-active { display: block !important; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-link { cursor: pointer; transition: 0.3s; padding: 5px 10px; }
         .nav-active { color: #3b82f6 !important; border-bottom: 2px solid #3b82f6; }
-        .glass-box { background: rgba(10, 10, 10, 0.95); border: 1px solid #1e3a8a; backdrop-filter: blur(15px); }
+        .glass-box { background: rgba(5, 5, 5, 0.9); border: 1px solid #1e3a8a; backdrop-filter: blur(10px); border-radius: 8px; }
         main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #1e3a8a; }
     </style>
 </head>
 <body>
 
     <canvas id="matrix-canvas"></canvas>
 
-    <nav class="bg-black/90 border-b border-blue-900/40 p-4 sticky top-0 z-50">
+    <nav class="bg-black/95 border-b border-blue-900/40 p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div onclick="showPage('home')" class="text-xl font-black text-blue-500 font-cyber cursor-pointer">AGENT_OS</div>
-            <ul class="flex space-x-reverse space-x-4 text-xs md:text-sm font-bold items-center">
+            <ul class="flex space-x-reverse space-x-3 md:space-x-6 text-[10px] md:text-sm font-bold items-center">
                 <li><a onclick="showPage('home')" id="link-home" class="nav-link nav-active">الرئيسية</a></li>
-                <li id="nav-login"><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 rounded">دخول</a></li>
+                <li><a onclick="showPage('about')" id="link-about" class="nav-link">من نحن</a></li>
+                <li><a onclick="showPage('work')" id="link-work" class="nav-link text-red-500">أعمالنا</a></li>
+                <li><a onclick="showPage('contact')" id="link-contact" class="nav-link">اتصل بنا</a></li>
+                <li id="nav-login"><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 rounded px-3 py-1">دخول</a></li>
                 <li id="nav-profile" class="hidden"><a onclick="showPage('profile')" id="link-profile" class="nav-link text-green-500 font-cyber">PROFILE</a></li>
                 <li id="nav-logout" class="hidden"><a onclick="logout()" class="nav-link text-red-500">خروج</a></li>
             </ul>
@@ -39,36 +44,64 @@
         
         <div id="page-home" class="page-section page-active text-center pt-24">
             <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
-            <p class="text-gray-400 text-lg font-bold">بوابة النفاذ الآمن - النظام في وضع الاستعداد.</p>
+            <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2">نظام النفاذ والسيطرة - الحالة: نشط</p>
+        </div>
+
+        <div id="page-about" class="page-section pt-10">
+            <div class="glass-box p-10 text-right border-l-4 border-blue-600">
+                <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber">WHO_WE_ARE</h2>
+                <p class="text-xl leading-relaxed text-gray-300">نحن منظمة تقنية تهدف لتطوير أدوات الحماية واختبار الثغرات الأمنية في الأنظمة المعقدة.</p>
+            </div>
+        </div>
+
+        <div id="page-work" class="page-section pt-10">
+            <h2 class="text-3xl font-black mb-8 text-center font-cyber">PROJECT_LOGS</h2>
+            <div class="grid md:grid-cols-2 gap-6 pb-10">
+                <div class="glass-box p-6 border-b-2 border-red-600">
+                    <h3 class="text-red-500 font-bold mb-2 font-cyber italic">STUXNET_2.0</h3>
+                    <p class="text-gray-400 text-sm">محاكاة اختراق الأنظمة الصناعية بنجاح.</p>
+                </div>
+                <div class="glass-box p-6 border-b-2 border-blue-600">
+                    <h3 class="text-blue-500 font-bold mb-2 font-cyber italic">SQL_INJECTION_TOOL</h3>
+                    <p class="text-gray-400 text-sm">تطوير أداة سحب قواعد البيانات المشفرة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-contact" class="page-section pt-10">
+            <div class="glass-box p-10 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">SEND_SIGNAL</h2>
+                <form class="space-y-4 text-right">
+                    <input type="text" placeholder="الاسم الحركي" class="w-full bg-zinc-900 border border-zinc-800 p-3 text-white outline-none focus:border-blue-600 rounded">
+                    <textarea placeholder="رسالتك المشفرة" class="w-full bg-zinc-900 border border-zinc-800 p-3 text-white outline-none focus:border-blue-600 rounded h-32"></textarea>
+                    <button type="button" class="w-full bg-blue-600 py-3 font-black hover:bg-blue-700 transition">إرسال</button>
+                </form>
+            </div>
         </div>
 
         <div id="page-login" class="page-section pt-10">
-            <div class="max-w-md mx-auto glass-box p-10 shadow-2xl rounded">
-                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">ACCESS_REQUIRED</h2>
+            <div class="max-w-md mx-auto glass-box p-10 shadow-2xl">
+                <h2 class="text-2xl font-black mb-8 text-center font-cyber text-blue-500">AGENT_LOGIN</h2>
                 <form id="loginForm" class="space-y-6">
-                    <input type="text" id="userInput" placeholder="USER_ID (207...)" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
+                    <input type="text" id="userInput" placeholder="USER_ID" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
                     <input type="password" id="passInput" placeholder="PASSWORD" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center outline-none focus:border-blue-600 rounded">
-                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase hover:bg-blue-700 transition">تحليل الدخول</button>
-                    <p id="errorMsg" class="text-red-500 text-xs text-center hidden">خطأ: بيانات غير صالحة!</p>
+                    <button type="submit" class="w-full bg-blue-600 py-4 font-black uppercase shadow-lg">تحقق</button>
+                    <p id="errorMsg" class="text-red-500 text-xs text-center hidden">بيانات غير صحيحة!</p>
                 </form>
             </div>
         </div>
 
         <div id="page-profile" class="page-section pt-10">
-            <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500 shadow-2xl">
-                <h2 class="text-3xl font-black font-cyber text-green-500 mb-6 uppercase">AGENT_FILE: 207-74-9724</h2>
-                <div class="grid md:grid-cols-2 gap-10 text-right">
+            <div class="max-w-4xl mx-auto glass-box p-10 border-r-4 border-green-500">
+                <h2 class="text-3xl font-black font-cyber text-green-500 mb-6 uppercase">AGENT_DATA: 207-74-9724</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-right">
                     <div class="space-y-4">
-                        <p class="text-blue-400 font-bold">الاسم: <span class="text-white">SHADOW_WALKER</span></p>
-                        <p class="text-blue-400 font-bold">الصلاحية: <span class="text-white">ALPHA_LEVEL</span></p>
-                        <p class="text-blue-400 font-bold">الحالة: <span class="text-green-500 animate-pulse">ONLINE</span></p>
+                        <p class="text-blue-400">الاسم: <span class="text-white">SHADOW_WALKER</span></p>
+                        <p class="text-blue-400">الحالة: <span class="text-green-500 animate-pulse">ACTIVE_SESSION</span></p>
                     </div>
-                    <div class="bg-blue-900/10 p-6 rounded border border-blue-900/40">
-                        <h4 class="text-blue-500 font-bold mb-4">الملفات المتاحة لك:</h4>
-                        <ul class="text-xs text-gray-400 space-y-3">
-                            <li class="underline cursor-pointer hover:text-white italic">● أرشيف المنطقة 51</li>
-                            <li class="underline cursor-pointer hover:text-white italic">● قاعدة بيانات البنوك</li>
-                        </ul>
+                    <div class="bg-blue-900/10 p-4 border border-blue-900/30">
+                        <p class="text-blue-500 font-bold mb-2">الملفات المسربة:</p>
+                        <p class="text-xs text-gray-400 italic underline cursor-pointer">● أرشيف البنك المركزي.zip</p>
                     </div>
                 </div>
             </div>
@@ -98,7 +131,7 @@
         }
         setInterval(draw, 35);
 
-        // التنقل بين الصفحات
+        // التنقل
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
             document.getElementById('page-' + pageId).classList.add('page-active');
@@ -107,12 +140,11 @@
             document.querySelector('main').scrollTo(0,0);
         }
 
-        // تسجيل الدخول
+        // تسجيل الدخول بالبيانات الخاصة بك
         document.getElementById('loginForm').onsubmit = function(e) {
             e.preventDefault();
             const u = document.getElementById('userInput').value.trim();
             const p = document.getElementById('passInput').value.trim();
-            
             if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
                 document.getElementById('nav-login').classList.add('hidden');
                 document.getElementById('nav-profile').classList.remove('hidden');
@@ -124,7 +156,7 @@
         };
 
         function logout() {
-            window.location.reload(); // إعادة تشغيل الموقع لتنظيف البيانات
+            window.location.reload();
         }
 
         window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
