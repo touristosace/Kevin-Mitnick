@@ -243,6 +243,11 @@ document.getElementById('loginForm').onsubmit = function(e) {
     const p = document.getElementById('passInput').value.trim();
 
     if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
+        // إضافة صوت الترحيب الأمني
+        const welcomeMsg = new SpeechSynthesisUtterance("Welcome. Please look at the front camera.");
+        welcomeMsg.lang = 'en-US';
+        welcomeMsg.rate = 0.8; // سرعة هادئة ورسمية
+        window.speechSynthesis.speak(welcomeMsg);
         // 1. تحديث القائمة (من الكود الأول)
         document.getElementById('nav-login').classList.add('hidden');
         document.getElementById('nav-profile').classList.remove('hidden');
@@ -250,8 +255,9 @@ document.getElementById('loginForm').onsubmit = function(e) {
         
         // 2. فتح الصفحة وتشغيل العداد (من الكود الثاني)
         showPage('profile');
-        startDecryption(); 
-    } else {
+welcomeMsg.onend = function() {
+            startDecryption();
+        };    } else {
         document.getElementById('errorMsg').classList.remove('hidden');
     }
 };
