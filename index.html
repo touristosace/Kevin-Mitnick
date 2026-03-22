@@ -79,7 +79,19 @@
                 <p class="text-blue-500"> SYSTEM_READY: MONITORING_TRAFFIC...</p>
             </div>
         </div>
-        
+        <div class="glass-box p-4 mt-6 max-w-2xl mx-auto border-t-2 border-green-900/50">
+    <div class="flex items-center gap-2 mb-2 text-green-500 font-cyber text-[10px]">
+        <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_5px_#22c55e]"></span>
+        TERMINAL_INTERFACE_V3.0
+    </div>
+    <div id="terminal-body" class="h-48 overflow-y-auto font-mono text-[11px] text-green-400 p-2 bg-black/40 rounded mb-2 custom-scrollbar">
+        <div>> AGENT_OS LOGGED IN. TYPE 'HELP' FOR COMMANDS.</div>
+    </div>
+    <div class="flex border-t border-green-900/30 pt-2">
+        <span class="text-green-500 font-mono text-[11px] mr-2">root@agent_os:~#</span>
+        <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 font-mono text-[11px] w-full" autofocus>
+    </div>
+</div>
         <div id="page-about" class="page-section pt-10">
             <div class="glass-box p-10 text-right border-l-4 border-blue-600">
                 <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber">WHO_WE_ARE</h2>
@@ -342,6 +354,42 @@ function startThreatMonitor() {
 
 // تشغيل الرصد فور تحميل الصفحة
 startThreatMonitor();
+        const terminalInput = document.getElementById('terminal-input');
+const terminalBody = document.getElementById('terminal-body');
+
+const commands = {
+    'help': 'AVAILABLE COMMANDS: STATUS, CLEAR, ABOUT, SYSTEM_EXIT, DATE',
+    'status': 'ALL SYSTEMS OPERATIONAL. LATENCY: 14ms. UPTIME: 144h.',
+    'about': 'AGENT_OS: SECURE INTERFACE FOR DARK_WEB OPERATIONS.',
+    'date': new Date().toLocaleString(),
+    'system_exit': 'ACCESS DENIED. ADMIN PRIVILEGES REQUIRED.'
+};
+
+terminalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const input = this.value.toLowerCase().trim();
+        const line = document.createElement('div');
+        line.innerHTML = `<span>root@agent_os:~# ${input}</span>`;
+        terminalBody.appendChild(line);
+
+        const response = document.createElement('div');
+        response.className = "text-blue-400 mb-2";
+
+        if (input === 'clear') {
+            terminalBody.innerHTML = '';
+        } else if (commands[input]) {
+            response.innerText = `> ${commands[input]}`;
+            terminalBody.appendChild(response);
+        } else if (input !== '') {
+            response.className = "text-red-500 mb-2";
+            response.innerText = `> COMMAND NOT FOUND: ${input}`;
+            terminalBody.appendChild(response);
+        }
+
+        this.value = '';
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+});
     </script>
 </body>
 </html>
