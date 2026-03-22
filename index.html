@@ -19,19 +19,11 @@
         main { height: calc(100vh - 80px); overflow-y: auto; position: relative; z-index: 10; }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #1e3a8a; }
-        
-        /* تنسيقات الرصد */
         #threat-log p { border-left: 2px solid #ef4444; padding-left: 8px; background: rgba(239, 68, 68, 0.05); animation: slideIn 0.3s ease-out; margin-bottom: 4px; }
         @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
         .threat-critical { color: #ef4444; font-weight: bold; }
         .threat-warning { color: #f59e0b; }
         .threat-success { color: #10b981; }
-        .emergency-light { animation: alertBlink 0.3s infinite !important; }
-        @keyframes alertBlink {
-            0% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
-            50% { background-color: #ef4444; box-shadow: 0 0 15px #ef4444; }
-            100% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
-        }
     </style>
 </head>
 <body>
@@ -46,7 +38,7 @@
                 <li><a onclick="showPage('work')" id="link-work" class="nav-link text-red-500">أعمالنا</a></li>
                 <li><a onclick="showPage('contact')" id="link-contact" class="nav-link">اتصل بنا</a></li>
                 <li id="nav-login"><a onclick="showPage('login')" id="link-login" class="nav-link border border-blue-600 rounded px-3 py-1">دخول</a></li>
-                <li id="nav-profile" class="hidden"><a onclick="showPage('profile')" id="link-profile" class="nav-link text-green-500 font-cyber">PROFILE</a></li>
+                <li id="nav-profile" class="hidden"><a onclick="showPage('profile')" id="link-profile" class="nav-link text-green-500 font-cyber underline">PROFILE</a></li>
                 <li id="nav-logout" class="hidden"><a onclick="logout()" class="nav-link text-red-500">خروج</a></li>
             </ul>
         </div>
@@ -56,43 +48,23 @@
         <div id="page-home" class="page-section page-active text-center pt-20">
             <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
             <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2 mb-8">نظام النفاذ والسيطرة - الحالة: نشط</p>
-
             <div id="threat-monitor" class="glass-box p-4 mt-6 border-l-4 border-red-600 max-w-2xl mx-auto text-left mb-6" dir="ltr">
                 <div class="flex justify-between items-center mb-4 border-b border-red-900/30 pb-2">
                     <h3 class="text-red-500 font-black font-cyber text-[10px] flex items-center gap-2">
-                        <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
-                        LIVE_THREAT_DETECTION
+                        <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span> LIVE_THREAT_DETECTION
                     </h3>
-                    <span class="text-[9px] text-gray-500 font-mono" id="current-timestamp"></span>
                 </div>
                 <div id="threat-log" class="h-24 overflow-hidden font-mono text-[10px] space-y-2">
                     <p class="text-blue-500">> SYSTEM_READY: MONITORING_TRAFFIC...</p>
-                </div>
-            </div>
-
-            <div class="glass-box p-4 max-w-2xl mx-auto border-t-2 border-green-900/50 text-left" dir="ltr">
-                <div class="flex items-center gap-2 mb-2 text-green-500 font-cyber text-[10px]">
-                    <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_5px_#22c55e]"></span>
-                    TERMINAL_INTERFACE_V3.0
-                </div>
-                <div id="terminal-body" class="h-32 overflow-y-auto font-mono text-[11px] text-green-400 p-2 bg-black/40 rounded mb-2">
-                    <div>> AGENT_OS LOGGED IN. TYPE 'HELP' FOR COMMANDS.</div>
-                </div>
-                <div class="flex border-t border-green-900/30 pt-2">
-                    <span class="text-green-500 font-mono text-[11px] mr-2">root@agent_os:~#</span>
-                    <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 font-mono text-[11px] w-full" autocomplete="off">
                 </div>
             </div>
         </div>
 
         <div id="page-about" class="page-section pt-10">
             <div class="glass-box p-10 text-right border-l-4 border-blue-600">
-                <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber">WHO_WE_ARE</h2>
+                <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber uppercase">WHO_WE_ARE</h2>
                 <div class="text-lg leading-relaxed text-gray-300">
-                    نحن منظمة تقنية تهدف لتطوير أدوات الحماية واختبار الثغرات الأمنية...
-                    <br><br>
-                    <span class="text-blue-500 font-bold">• شركات الأمن السيبراني الدفاعي (Blue Teaming)</span><br>
-                    <span class="text-red-500 font-bold">• شركات اختبار الاختراق (Red Teaming)</span>
+                    نحن منظمة تقنية تهدف لتطوير أدوات الحماية واختبار الثغرات الأمنية والأنظمة الدفاعية المتطورة.
                 </div>
             </div>
         </div>
@@ -101,109 +73,72 @@
             <h2 class="text-4xl font-black mb-10 text-center font-cyber text-red-600 italic">[ CLASSIFIED_OPERATIONS ]</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="glass-box p-6 border-r-4 border-red-600">
-                    <h3 class="text-red-500 font-black font-cyber mb-2">OP_STUXNET_2.0</h3>
+                    <h3 class="text-red-500 font-black font-cyber mb-2 uppercase">OP_STUXNET_2.0</h3>
                     <p class="text-gray-400 text-sm">نجاح محاكاة اختراق الأنظمة الصناعية بنسبة 98%.</p>
                 </div>
-                <div class="glass-box p-6 border-r-4 border-blue-600">
-                    <h3 class="text-blue-500 font-black font-cyber mb-2">FINANCIAL_VOID</h3>
-                    <p class="text-gray-400 text-sm">تجاوز بروتوكولات Swift البنكية الدولية.</p>
+            </div>
+        </div>
+
+        <div id="page-contact" class="page-section pt-10">
+            <div class="max-w-2xl mx-auto glass-box p-10 text-center border-t-4 border-blue-500">
+                <h2 class="text-3xl font-black mb-8 font-cyber text-blue-500">SECURE_COMMUNICATION</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p>للإبلاغ عن ثغرات أمنية أو طلب تعاون تقني:</p>
+                    <div class="bg-black/50 p-4 rounded border border-blue-900/30 font-mono text-blue-400">
+                        EMAIL: encrypted@agent-os.net<br>
+                        P2P: 829-X01-AGENT
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="page-login" class="page-section pt-10">
             <div class="max-w-md mx-auto glass-box p-10 text-center">
-                <h2 class="text-2xl font-black mb-8 font-cyber text-blue-500">AGENT_LOGIN</h2>
+                <h2 class="text-2xl font-black mb-8 font-cyber text-blue-500 uppercase">AGENT_LOGIN</h2>
                 <form id="loginForm" class="space-y-6">
                     <input type="text" id="userInput" placeholder="USER_ID" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center rounded outline-none">
                     <input type="password" id="passInput" placeholder="PASSWORD" class="w-full bg-zinc-900 border border-zinc-800 p-4 text-white text-center rounded outline-none">
-                    <button type="submit" class="w-full bg-blue-600 py-4 font-black">تحقق</button>
+                    <button type="submit" class="w-full bg-blue-600 py-4 font-black hover:bg-blue-700 transition">تحقق</button>
                     <p id="errorMsg" class="text-red-500 text-xs hidden">بيانات غير صحيحة!</p>
                 </form>
             </div>
         </div>
 
-<div id="page-profile" class="page-section pt-10">
-    <div class="max-w-4xl mx-auto space-y-4">
-        
-        <div class="glass-box p-6 border border-green-500/50 relative overflow-hidden">
-            <div class="flex justify-end mb-8">
-                <h2 class="text-2xl font-black font-cyber text-green-500 italic">AGENT_DOSSIER</h2>
-            </div>
-            
-            <div class="flex flex-row justify-between items-end mb-10 px-2">
-                <div class="text-left">
-                    <p class="text-[8px] text-gray-500 font-cyber mb-1">:ACCESS_LEVEL</p>
-                    <p class="text-lg text-red-600 font-black font-cyber">LEVEL_09 (OVERRIDE)</p>
+        <div id="page-profile" class="page-section pt-10">
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="glass-box p-6 border border-green-500/50 relative overflow-hidden">
+                    <div class="flex justify-end mb-8"><h2 class="text-2xl font-black font-cyber text-green-500 italic">AGENT_DOSSIER</h2></div>
+                    <div class="flex justify-between items-end mb-10 px-2">
+                        <div class="text-left"><p class="text-[8px] text-gray-500 font-cyber">:ACCESS_LEVEL</p><p class="text-lg text-red-600 font-black">LEVEL_09 (OVERRIDE)</p></div>
+                        <div class="text-right"><p class="text-[8px] text-gray-500 font-cyber">:CODENAME</p><p class="text-xl text-white font-black">شيرين كارادينيز اوران</p></div>
+                    </div>
+                    <div class="relative pt-4 border-t border-green-900/30">
+                        <div class="flex justify-between items-center text-[9px] font-cyber mb-2">
+                            <div class="text-green-500"><span id="profilePercentText">0.00</span>%</div>
+                            <div class="text-green-500 uppercase">Decryption_Progress</div>
+                        </div>
+                        <div class="w-full bg-black/60 h-1.5 rounded-full overflow-hidden">
+                            <div id="profileProgressBar" class="h-full bg-green-500 shadow-[0_0_10px_#22c55e]" style="width: 0%"></div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="text-right">
-                    <p class="text-[8px] text-gray-500 font-cyber mb-1">:CODENAME</p>
-                    <p class="text-xl text-white font-black">شيرين كارادينيز اوران</p>
-                </div>
-            </div>
-
-            <div class="relative pt-4 border-t border-green-900/30">
-                <div class="flex justify-between items-center text-[9px] font-cyber mb-2">
-                    <div class="text-green-500"><span id="percentText">0.00</span>%</div>
-                    <div class="text-green-500 uppercase">Decryption_Progress</div>
-                </div>
-                <div class="w-full bg-black/60 h-1.5 rounded-full overflow-hidden">
-                    <div id="progressBar" class="h-full bg-green-500 shadow-[0_0_10px_#22c55e]" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-3 gap-3">
-            <div class="glass-box p-3 border-b-2 border-blue-900/50 text-center">
-                <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">STATUS</p>
-                <p class="text-[10px] font-bold text-green-500 animate-pulse">ACTIVE_MISSION</p>
-            </div>
-            <div class="glass-box p-3 border-b-2 border-blue-900/50 text-center">
-                <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">LOCATION</p>
-                <p class="text-[10px] font-bold text-gray-300 italic">SWITZERLAND</p>
-            </div>
-            <div class="glass-box p-3 border-b-2 border-blue-900/50 text-center">
-                <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">SPECIALTY</p>
-                <p class="text-[10px] font-bold text-gray-300">الاستخبارات السيبرانية</p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-            <div class="mt-6">
-                <div class="flex justify-between text-[10px] mb-2 font-cyber text-green-500">
-                    <span>DECRYPTION_PROGRESS</span>
-                    <span><span id="percentText">0.00</span>%</span>
-                </div>
-                <div class="w-full bg-black/50 h-3 rounded-full border border-green-900/30 overflow-hidden">
-                    <div id="progressBar" class="h-full bg-gradient-to-r from-green-900 via-green-500 to-green-400 shadow-[0_0_15px_#22c55e]" style="width: 0%"></div>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="glass-box p-4 border-b-2 border-blue-900 text-center">
+                        <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">STATUS</p><p class="text-[10px] font-bold text-green-500 animate-pulse">ACTIVE</p>
+                    </div>
+                    <div class="glass-box p-4 border-b-2 border-blue-900 text-center">
+                        <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">LOCATION</p><p class="text-[10px] font-bold text-gray-300 italic">SWITZERLAND</p>
+                    </div>
+                    <div class="glass-box p-4 border-b-2 border-blue-900 text-center">
+                        <p class="text-[8px] text-blue-400 font-cyber mb-1 uppercase">SPECIALTY</p><p class="text-[10px] font-bold text-gray-200">CYBER_INTEL</p>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-4">
-            <div class="glass-box p-4 border-t-2 border-blue-600">
-                <p class="text-[9px] text-blue-500 font-cyber mb-2">FIELD_SPECIALTY</p>
-                <p class="text-sm font-bold text-gray-200">الاستخبارات السيبرانية</p>
-            </div>
-            <div class="glass-box p-4 border-t-2 border-blue-600">
-                <p class="text-[9px] text-blue-500 font-cyber mb-2">CURRENT_LOCATION</p>
-                <p class="text-sm font-bold text-gray-200 italic">SWITZERLAND</p>
-            </div>
-            <div class="glass-box p-4 border-t-2 border-blue-600">
-                <p class="text-[9px] text-blue-500 font-cyber mb-2">STATUS</p>
-                <p class="text-sm font-bold text-green-500 animate-pulse">ACTIVE_MISSION</p>
-            </div>
-        </div>
-
-    </div>
-</div>
     </main>
 
     <script>
-        // 1. الماتريكس
+        // مصفوفة الماتريكس
         const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
@@ -221,7 +156,7 @@
         }
         setInterval(draw, 35);
 
-        // 2. دالة التنقل (showPage)
+        // وظيفة التنقل بين الصفحات
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(s => s.classList.remove('page-active'));
             const targetPage = document.getElementById('page-' + pageId);
@@ -232,95 +167,36 @@
             if(targetLink) targetLink.classList.add('nav-active');
         }
 
-        // 3. نظام الرصد والمحطة
-        const threatEntries = [
-            { t: "INTRUSION ATTEMPT", c: "threat-critical" },
-            { t: "SQLi DETECTED", c: "threat-warning" },
-            { t: "FIREWALL BYPASS", c: "threat-critical" },
-            { t: "ENCRYPTED SIGNAL", c: "threat-success" }
-        ];
-
-        function initSystems() {
-            const log = document.getElementById('threat-log');
-            const termInput = document.getElementById('terminal-input');
-            const termBody = document.getElementById('terminal-body');
-
-            // تحديث الرصد
-            setInterval(() => {
-                if (document.getElementById('page-home').classList.contains('page-active')) {
-                    const item = threatEntries[Math.floor(Math.random() * threatEntries.length)];
-                    const p = document.createElement('p');
-                    p.className = item.c;
-                    p.innerHTML = `> [${new Date().toLocaleTimeString()}] ${item.t} [MITIGATED]`;
-                    if(log) {
-                        log.prepend(p);
-                        if (log.childNodes.length > 5) log.removeChild(log.lastChild);
-                    }
-                }
-            }, 3000);
-
-            // المحطة
-            if(termInput) {
-                termInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        const val = termInput.value.toLowerCase().trim();
-                        const line = document.createElement('div');
-                        line.innerHTML = `<span class="text-white">root@agent_os:~# ${val}</span>`;
-                        termBody.appendChild(line);
-                        
-                        const res = document.createElement('div');
-                        res.className = "text-blue-400 mb-1";
-                        if(val === 'help') res.innerText = "> STATUS, CLEAR, ABOUT, IP";
-                        else if(val === 'status') res.innerText = "> ALL SYSTEMS SECURE.";
-                        else if(val === 'clear') { termBody.innerHTML = ''; res.innerText = ''; }
-                        else res.innerText = `> Unknown command: ${val}`;
-                        
-                        termBody.appendChild(res);
-                        termInput.value = '';
-                        termBody.scrollTop = termBody.scrollHeight;
-                    }
-                });
+        // نظام الدخول
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            const u = document.getElementById('userInput').value.trim();
+            const p = document.getElementById('passInput').value.trim();
+            if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
+                document.getElementById('nav-login').classList.add('hidden');
+                document.getElementById('nav-profile').classList.remove('hidden');
+                document.getElementById('nav-logout').classList.remove('hidden');
+                showPage('profile');
+                startDecryption();
+            } else {
+                document.getElementById('errorMsg').classList.remove('hidden');
             }
-        }
+        };
 
-        // 4. نظام الدخول
-// نظام الدخول المعدل لنقلك للملف الشخصي فوراً
-document.getElementById('loginForm').onsubmit = function(e) {
-    e.preventDefault();
-    const u = document.getElementById('userInput').value.trim();
-    const p = document.getElementById('passInput').value.trim();
-    
-    // بيانات الدخول الخاصة بك
-    if (u === "207-74-9724" && p === "S01H7ERI19NN70") {
-        // إخفاء زر الدخول وإظهار الروابط السرية
-        document.getElementById('nav-login').classList.add('hidden');
-        document.getElementById('nav-profile').classList.remove('hidden');
-        document.getElementById('nav-logout').classList.remove('hidden');
-        
-        // الانتقال لصفحة الملف الشخصي لإظهار بيانات المشترك
-        showPage('profile'); 
-        
-        // بدء تأثير تحميل البيانات
-        startDecryption(); 
-    } else { 
-        document.getElementById('errorMsg').classList.remove('hidden'); 
-    }
-};
-
+        // عداد فك التشفير في الملف الشخصي
         function startDecryption() {
             let p = 0;
-            const b = document.getElementById('progressBar');
-            const t = document.getElementById('percentText');
+            const b = document.getElementById('profileProgressBar');
+            const t = document.getElementById('profilePercentText');
             const intv = setInterval(() => {
-                p += Math.random() * 0.4;
-                if (p >= 91) { p = 91.00; clearInterval(intv); }
+                p += Math.random() * 0.5;
+                if (p >= 98.2) { p = 98.20; clearInterval(intv); }
                 if(b) b.style.width = p + '%';
                 if(t) t.innerText = p.toFixed(2);
-            }, 150);
+            }, 100);
         }
 
         function logout() { window.location.reload(); }
-        window.onload = initSystems;
         window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
     </script>
 </body>
