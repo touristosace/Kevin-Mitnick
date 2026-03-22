@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
+        
         body { background-color: #000; color: #fff; font-family: 'Cairo', sans-serif; margin: 0; overflow: hidden; }
         .font-cyber { font-family: 'Orbitron', sans-serif; }
         #matrix-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.5; }
@@ -25,6 +26,21 @@
             50% { background-color: #ef4444; box-shadow: 0 0 15px #ef4444; }
             100% { background-color: #22c55e; box-shadow: 0 0 15px #22c55e; }
         }
+        /* تنسيقات نظام رصد التهديدات */
+        #threat-log p {
+            border-left: 2px solid #ef4444;
+            padding-left: 8px;
+            background: rgba(239, 68, 68, 0.05);
+            animation: slideIn 0.3s ease-out;
+            margin-bottom: 4px;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .threat-critical { color: #ef4444; font-weight: bold; }
+        .threat-warning { color: #f59e0b; }
+        .threat-success { color: #10b981; }
     </style>
 </head>
 <body>
@@ -51,6 +67,19 @@
             <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2">نظام النفاذ والسيطرة - الحالة: نشط</p>
         </div>
 
+        <div id="threat-monitor" class="glass-box p-4 mt-6 border-l-4 border-red-600 max-w-2xl mx-auto text-left" dir="ltr">
+            <div class="flex justify-between items-center mb-4 border-b border-red-900/30 pb-2">
+                <h3 class="text-red-500 font-black font-cyber text-[10px] flex items-center gap-2">
+                    <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+                    LIVE_THREAT_DETECTION
+                </h3>
+                <span class="text-[9px] text-gray-500 font-mono" id="current-timestamp"></span>
+            </div>
+            <div id="threat-log" class="h-32 overflow-hidden font-mono text-[10px] space-y-2">
+                <p class="text-blue-500">> SYSTEM_READY: MONITORING_TRAFFIC...</p>
+            </div>
+        </div>
+        
         <div id="page-about" class="page-section pt-10">
             <div class="glass-box p-10 text-right border-l-4 border-blue-600">
                 <h2 class="text-3xl font-black mb-6 text-blue-500 font-cyber">WHO_WE_ARE</h2>
@@ -279,6 +308,40 @@
         function closeFullProfile() { document.getElementById('fullProfileModal').classList.add('hidden'); }
         function logout() { window.location.reload(); }
         window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        // مصفوفة التهديدات الوهمية
+const threatList = [
+    { type: "INTRUSION ATTEMPT", color: "threat-critical" },
+    { type: "SQLi DETECTED", color: "threat-warning" },
+    { type: "FIREWALL BYPASS", color: "threat-critical" },
+    { type: "ENCRYPTED SIGNAL", color: "threat-success" },
+    { type: "DDOS PACKET", color: "threat-warning" }
+];
+
+function startThreatMonitor() {
+    const log = document.getElementById('threat-log');
+    if(!log) return;
+
+    setInterval(() => {
+        const threat = threatList[Math.floor(Math.random() * threatList.length)];
+        const ip = `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.X.X`;
+        
+        const entry = document.createElement('p');
+        entry.className = threat.color;
+        entry.innerHTML = `> [${new Date().toLocaleTimeString()}] ALERT: ${threat.type} FROM: ${ip} [MITIGATED]`;
+        
+        log.prepend(entry);
+        if (log.childNodes.length > 5) log.removeChild(log.lastChild);
+    }, 3000);
+
+    // تحديث الساعة في الصندوق
+    setInterval(() => {
+        const timeEl = document.getElementById('current-timestamp');
+        if(timeEl) timeEl.innerText = new Date().toISOString();
+    }, 1000);
+}
+
+// تشغيل الرصد فور تحميل الصفحة
+startThreatMonitor();
     </script>
 </body>
 </html>
