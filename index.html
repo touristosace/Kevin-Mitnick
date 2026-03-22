@@ -20,8 +20,6 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: #1e3a8a; }
 
-        /* --- التأثيرات الجديدة المطلوبة --- */
-        /* تأثير الرعشة الأخضر (بداية التحميل) */
         .glitch-green { animation: greenPulse 0.15s infinite; }
         @keyframes greenPulse {
             0% { background-color: #22c55e; box-shadow: 0 0 5px #22c55e; }
@@ -29,7 +27,6 @@
             100% { background-color: #22c55e; box-shadow: 0 0 5px #22c55e; }
         }
 
-        /* تأثير الرعشة التحذيري (أحمر وأصفر عند 91%) */
         .glitch-warning { animation: warningGlitch 0.1s infinite; }
         @keyframes warningGlitch {
             0% { background-color: #ef4444; box-shadow: 0 0 20px #ef4444; }
@@ -62,113 +59,70 @@
             <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2 mb-8">نظام النفاذ والسيطرة - الحالة: نشط</p>
         </div>
 
-<div class="grid md:grid-cols-2 gap-6 mt-6">
-    
-    <div class="glass-box p-6 border-l-4 border-green-500 bg-black/40">
-        <h3 class="text-green-500 font-cyber mb-4 flex items-center">
-            <span class="mr-2">▶</span> PERSONAL_DATA
-        </h3>
-        <ul class="space-y-3 text-sm">
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">الاسم كاملاً:</span>
-                <span class="text-white font-black">شيرين كارادينيز أوران</span>
-            </li>
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">تاريخ الميلاد:</span>
-                <span class="text-white">25 أبريل 1977</span>
-            </li>
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">العمر:</span>
-                <span class="text-white">49 عاماً</span>
-            </li>
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">مكان الميلاد:</span>
-                <span class="text-white">تركيا</span>
-            </li>
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">الحالة الاجتماعية:</span>
-                <span class="text-white">متزوجة</span>
-            </li>
-            <li class="flex justify-between border-b border-green-900/30 pb-1">
-                <span class="text-gray-500">الإقامة الحالية:</span>
-                <span class="text-white">إسطنبول، تركيا</span>
-            </li>
-            <li class="flex flex-col pt-1">
-                <span class="text-gray-500 mb-1">الوظيفة الحالية:</span>
-                <span class="text-red-500 font-bold text-xs">مستشارة - رئيس جامعة دوغوش و مجلس إدارة جامعة بهتشة شهير</span>
-            </li>
-        </ul>
-    </div>
+        <div id="page-profile" class="page-section pt-10">
+            <div class="glass-box p-8 border-green-900/50">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-black font-cyber text-green-500">[ AGENT_DOSSIER ]</h2>
+                    <span class="text-xs text-green-800">STATUS: AUTHORIZED</span>
+                </div>
 
-    <div class="glass-box p-6 border-l-4 border-blue-500 bg-black/40">
-        <h3 class="text-blue-500 font-cyber mb-4 flex items-center">
-            <span class="mr-2">▶</span> ACADEMIC_DOSSIER
-        </h3>
-        <div class="space-y-4">
-            <div>
-                <p class="text-[10px] text-blue-400 uppercase font-cyber">Academic Degrees</p>
-                <p class="text-gray-300 text-xs leading-relaxed">
-                    <b class="text-white">الدكتوراه والماجستير والبكالوريوس:</b> جامعة غازي (Gazi University) - تخصص تكنولوجيا التعليم وتصميم المناهج الرقمية.
-                </p>
-                <p class="text-xs mt-1"><span class="text-gray-500">الدرجة الحالية:</span> <span class="text-blue-400 font-bold">بروفيسور (أستاذ دكتور)</span></p>
-            </div>
-            
-            <div class="border-t border-blue-900/30 pt-3">
-                <p class="text-[10px] text-blue-400 uppercase font-cyber">Consultancy & Board</p>
-                <ul class="text-xs text-gray-300 space-y-2 mt-1">
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">▪</span>
-                        <span>مستشارة لمشاريع التحول الرقمي في <b class="text-white">UNICEF</b> والبنك الدولي بتركيا.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-blue-500 mr-2">▪</span>
-                        <span>عضو في مجلس إدارة مؤسسة <b class="text-white">BAU Global</b> التعليمية.</span>
-                    </li>
-                </ul>
+                <div class="mb-8">
+                    <div class="flex justify-between text-[10px] mb-2 font-cyber text-green-500">
+                        <span>DECRYPTION_PROGRESS</span>
+                        <span><span id="profilePercentText">0.00</span>%</span>
+                    </div>
+                    <div class="h-4 bg-zinc-900 border border-green-900 overflow-hidden">
+                        <div id="profileProgressBar" class="h-full w-0 transition-all duration-100 glitch-green"></div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-10">
+                    <button onclick="togglePersonalData()" class="border border-green-500 text-green-500 px-8 py-3 font-cyber hover:bg-green-500 hover:text-black transition-all shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                        [ OPEN_AGENT_FILE ]
+                    </button>
+                </div>
+
+                <div id="personal-data-section" class="hidden grid md:grid-cols-2 gap-6 mt-10">
+                    <div class="glass-box p-6 border-l-4 border-green-500 bg-black/40">
+                        <h3 class="text-green-500 font-cyber mb-4">PERSONAL_DATA▶</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between border-b border-green-900/30 pb-1"><span class="text-gray-500">الاسم كاملاً:</span> <span class="text-white">شيرين كارادينيز أوران</span></li>
+                            <li class="flex justify-between border-b border-green-900/30 pb-1"><span class="text-gray-500">تاريخ الميلاد:</span> <span class="text-white">25 أبريل 1977</span></li>
+                            <li class="flex justify-between border-b border-green-900/30 pb-1"><span class="text-gray-500">العمر:</span> <span class="text-white">49 عاماً</span></li>
+                            <li class="flex justify-between border-b border-green-900/30 pb-1"><span class="text-gray-500">مكان الإقامة:</span> <span class="text-white">إسطنبول، تركيا</span></li>
+                            <li class="pt-2 text-red-500 text-xs font-bold">رئيس جامعة دوغوش و مجلس إدارة جامعة بهتشة شهير</li>
+                        </ul>
+                    </div>
+                    <div class="glass-box p-6 border-l-4 border-blue-500 bg-black/40">
+                        <h3 class="text-blue-500 font-cyber mb-4">ACADEMIC_DOSSIER▶</h3>
+                        <p class="text-gray-300 text-xs leading-relaxed">بروفيسور (أستاذ دكتور) من جامعة غازي. مستشارة لمشاريع التحول الرقمي في UNICEF والبنك الدولي بتركيا.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div></div>
 
-        <div id="page-about" class="page-section pt-10 text-right"><div class="glass-box p-10 text-blue-500 font-black"> من نحن: منظمة تقنية للأمن السيبراني نحن وكالة استخبارات خاصة وفي هذا المكان الذي تلتقي فيه العبقرية بالفوضى المنظمة وهنا ليست مكاتب كلاسيكية، بل هي أقرب لـ "مختبر رقمي هنا خلاصة القول تكمن في "نحن لسنا مجرد شركة تقنية، نحن فريق من العقول التي تعيش في الكواليس الرقمية. في عالمٍ لا يتوقف فيه المهاجمون عن الابتكار، اخترنا أن نكون 'المرآة' التي تكشف عيوب الأنظمة قبل أن يستغلها العابثون. نحن نخبة من المختبرين الأخلاقيين الذين يتقنون لغة الشيفرات المعقدة، مهمتنا بسيطة في ظاهرها، عميقة في تفاصيلها: أن نفكر كعدوّك، لنحميك كصديق.".</div></div>
-<div id="page-work" class="page-section pt-10">
-    <h2 class="text-4xl font-black mb-10 text-center font-cyber text-red-600 italic">[ CLASSIFIED_OPERATIONS ]</h2>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
-        
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Penetration Testing</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">محاكاة هجمات سيبرانية متقدمة لتحديد واستغلال الثغرات الأمنية قبل المهاجمين.</p>
+        <div id="page-about" class="page-section pt-10 text-right">
+            <div class="glass-box p-10 text-blue-500 font-black leading-relaxed">
+                من نحن: منظمة تقنية للأمن السيبراني نحن وكالة استخبارات خاصة... (نصك التعريفي)
+            </div>
         </div>
 
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Social Engineering</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">اختبار العنصر البشري عبر تقنيات الخداع النفسي لتقييم الوعي الأمني المؤسسي.</p>
+        <div id="page-work" class="page-section pt-10">
+            <h2 class="text-4xl font-black mb-10 text-center font-cyber text-red-600 italic">[ CLASSIFIED_OPERATIONS ]</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+                <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
+                    <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Penetration Testing</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">محاكاة هجمات سيبرانية متقدمة لتحديد واستغلال الثغرات الأمنية.</p>
+                </div>
+                </div>
         </div>
 
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Zero-Day Research</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">البحث عن الثغرات غير المكتشفة وتطوير حلول استباقية للأنظمة الحساسة.</p>
+        <div id="page-contact" class="page-section pt-10 text-center">
+            <div class="glass-box p-10 text-blue-500 font-cyber uppercase tracking-widest">
+                [ SECURE_COMMUNICATION_ONLY ]
+            </div>
         </div>
 
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Cryptography</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">تطوير خوارزميات تشفير عسكرية وحماية البيانات الحساسة من التحليل والاعتراض.</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">Digital Forensics</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">تتبع الأثر الرقمي وتحليل الأدلة الجنائية بعد الحوادث الأمنية والاختراقات.</p>
-        </div>
-
-        <div class="glass-box p-6 border-r-4 border-red-600 hover:bg-red-900/10 transition-all text-right">
-            <h3 class="text-red-500 font-black font-cyber mb-2 uppercase text-sm">OP_STUXNET_2.0</h3>
-            <p class="text-gray-400 text-xs leading-relaxed">نجاح محاكاة اختراق الأنظمة الصناعية بنسبة 98%.</p>
-        </div>
-
-    </div>
-</div>        <div id="page-contact" class="page-section pt-10 text-center"><div class="glass-box p-10 text-blue-500">اتصل بنا عبر القنوات المشفرة فقط. والخاصة بنا هنا </div></div>
-        
         <div id="page-login" class="page-section pt-10">
             <div class="max-w-md mx-auto glass-box p-10 text-center">
                 <h2 class="text-2xl font-black mb-8 font-cyber text-blue-500 uppercase">AGENT_LOGIN</h2>
@@ -227,31 +181,31 @@
             }
         };
 
-        // العداد المعدل حسب طلبك
+        // العداد المعدل
         function startDecryption() {
             let p = 0;
             const b = document.getElementById('profileProgressBar');
             const t = document.getElementById('profilePercentText');
             
-            // إضافة الرعشة الخضراء فور البدء
-            if(b) b.classList.add('glitch-green');
-
             const intv = setInterval(() => {
                 p += Math.random() * 0.4;
-
-                // التوقف عند 91 وتغيير الألوان
                 if (p >= 91) { 
                     p = 91.00; 
                     clearInterval(intv); 
                     if(b) {
                         b.classList.remove('glitch-green');
-                        b.classList.add('glitch-warning'); // يقلب أحمر وأصفر
+                        b.classList.add('glitch-warning'); 
                     }
                 }
-
                 if(b) b.style.width = p + '%';
                 if(t) t.innerText = p.toFixed(2);
             }, 100);
+        }
+
+        // وظيفة إظهار/إخفاء البيانات الشخصية
+        function togglePersonalData() {
+            const section = document.getElementById('personal-data-section');
+            section.classList.toggle('hidden');
         }
 
         function logout() { window.location.reload(); }
