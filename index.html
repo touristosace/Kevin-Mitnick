@@ -67,9 +67,11 @@
             <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2">نظام النفاذ والسيطرة - الحالة: نشط</p>
             <div id="page-home" class="page-section page-active text-center pt-24">
     <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
+<div id="page-home" class="page-section page-active text-center pt-24">
+    <h1 class="text-6xl md:text-8xl font-black mb-6 font-cyber text-blue-500 uppercase italic">DARK_WEB</h1>
     <p class="text-gray-400 text-lg font-bold bg-black/50 inline-block p-2 mb-8">نظام النفاذ والسيطرة - الحالة: نشط</p>
 
-    <div id="threat-monitor" class="glass-box p-4 mt-6 border-l-4 border-red-600 max-w-2xl mx-auto text-left mb-6" dir="ltr">
+    <div id="threat-monitor" class="glass-box p-4 mt-6 border-l-4 border-red-600 max-w-2xl mx-auto text-left" dir="ltr">
         <div class="flex justify-between items-center mb-4 border-b border-red-900/30 pb-2">
             <h3 class="text-red-500 font-black font-cyber text-[10px] flex items-center gap-2">
                 <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
@@ -78,7 +80,35 @@
             <span class="text-[9px] text-gray-500 font-mono" id="current-timestamp"></span>
         </div>
         <div id="threat-log" class="h-24 overflow-hidden font-mono text-[10px] space-y-2">
-            <p class="text-blue-500">SYSTEM_READY: MONITORING_TRAFFIC...</p>
+            <p class="text-blue-500">> SYSTEM_READY: MONITORING_TRAFFIC...</p>
+        </div>
+    </div>
+
+    <div class="glass-box p-4 mt-6 max-w-2xl mx-auto border-t-2 border-green-900/50 text-left" dir="ltr">
+        <div class="flex items-center gap-2 mb-2 text-green-500 font-cyber text-[10px]">
+            <span class="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_5px_#22c55e]"></span>
+            TERMINAL_INTERFACE_V3.0
+        </div>
+        <div id="terminal-body" class="h-32 overflow-y-auto font-mono text-[11px] text-green-400 p-2 bg-black/40 rounded mb-2 custom-scrollbar">
+            <div>> AGENT_OS LOGGED IN. TYPE 'HELP' FOR COMMANDS.</div>
+        </div>
+        <div class="flex border-t border-green-900/30 pt-2">
+            <span class="text-green-500 font-mono text-[11px] mr-2">root@agent_os:~#</span>
+            <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 font-mono text-[11px] w-full" autocomplete="off">
+        </div>
+    </div>
+</div> ```
+
+---
+
+### لماذا هذا سيحل مشكلة "التكرار في كل الصفحات"؟
+لأن الكود الخاص بموقعك مصمم ليُظهر قسماً واحداً فقط في كل مرة (القسم الذي يحمل كلاس `page-active`). عندما وضعت الإضافات **خارج** هذه الأقسام، اعتبرها المتصفح عناصر "ثابتة" لا تتبع نظام التنقل، فظلت تظهر فوق صفحة "من نحن" و"أعمالنا". الآن بعد وضعها داخل `page-home` ستختفي تلقائياً بمجرد ضغطك على أي صفحة أخرى.
+
+
+### اللمسة الأخيرة (CSS):
+تأكد أن كود الـ CSS الخاص بالـ `glass-box` موجود في الأعلى كما ذكرت لك، ليعطي شكل الزجاج الشفاف الاحترافي.
+
+**قم بالتعديل الآن وجرب الانتقال بين الصفحات، ستجد أن الأنظمة تظهر فقط في الواجهة الرئيسية! هل نجح الأمر؟**
         </div>
     </div>
 
@@ -406,22 +436,9 @@ terminalInput.addEventListener('keydown', function(e) {
         const response = document.createElement('div');
         response.className = "text-blue-400 mb-2";
 
-        if (input === 'clear') {
-            terminalBody.innerHTML = '';
-        } else if (commands[input]) {
-            response.innerText = `> ${commands[input]}`;
-            terminalBody.appendChild(response);
-        } else if (input !== '') {
-            response.className = "text-red-500 mb-2";
-            response.innerText = `> COMMAND NOT FOUND: ${input}`;
-            terminalBody.appendChild(response);
-        }
+       // --- الجزء الخاص بالجافاسكريبت ---
 
-        this.value = '';
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
-});
-        // 1. نظام رصد التهديدات
+// 1. مصفوفة التهديدات
 const threatEntries = [
     { t: "INTRUSION ATTEMPT", c: "threat-critical" },
     { t: "SQLi DETECTED", c: "threat-warning" },
@@ -434,20 +451,22 @@ function initHomeSystems() {
     const termInput = document.getElementById('terminal-input');
     const termBody = document.getElementById('terminal-body');
 
-    // تشغيل رصد التهديدات
+    if (!log || !termInput) return;
+
+    // تشغيل نظام رصد التهديدات (يعمل فقط في الصفحة الرئيسية)
     setInterval(() => {
-        if(document.getElementById('page-home').classList.contains('page-active')) {
+        if (document.getElementById('page-home').classList.contains('page-active')) {
             const item = threatEntries[Math.floor(Math.random() * threatEntries.length)];
             const ip = `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.X.X`;
             const p = document.createElement('p');
             p.className = item.c;
             p.innerHTML = `> [${new Date().toLocaleTimeString()}] ${item.t} FROM: ${ip} [MITIGATED]`;
             log.prepend(p);
-            if (log.childNodes.length > 4) log.removeChild(log.lastChild);
+            if (log.childNodes.length > 5) log.removeChild(log.lastChild);
         }
     }, 3000);
 
-    // نظام الأوامر
+    // نظام الأوامر (Terminal)
     const termCommands = {
         'help': 'CMDS: STATUS, CLEAR, IP, ABOUT',
         'status': 'SECURE_OS: STABLE // ENCRYPTION: AES-256',
@@ -481,8 +500,11 @@ function initHomeSystems() {
     });
 }
 
-// استدعاء الوظائف عند التحميل
+// استدعاء الوظيفة عند التحميل
 initHomeSystems();
+
+// إغلاق الوسم النهائي
+</script>
     </script>
 </body>
 </html>
